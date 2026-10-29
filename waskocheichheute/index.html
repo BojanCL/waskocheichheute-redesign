@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Wireframe · Startseite · waskocheichheute.ch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/wireframe.css">
+</head>
+<body>
+
+<div class="wf-bar" role="region" aria-label="Wireframe-Steuerung">
+  <div class="wf-bar__title">
+    <span class="wf-badge">Wireframe</span>
+    <select class="wf-select" id="page-select" aria-label="Seite wählen">
+      <option value="index.html" selected>Startseite</option>
+      <option value="so-funktionierts.html">So funktioniert's</option>
+      <option value="kochideen.html">Kochideen</option>
+      <option value="kochidee-mekong.html">Kochidee (Beispiel Mekong)</option>
+      <option value="fuer-dich.html">Für dich</option>
+      <option value="ueber-uns.html">Über uns</option>
+    </select>
+    <span class="wf-bar__hint">Entwurf zur Diskussion · Reihenfolge und Inhalte, nicht Design</span>
+  </div>
+  <div class="wf-bar__controls">
+    <div class="wf-seg" role="group" aria-label="Ansicht">
+      <button type="button" class="wf-btn" data-view="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" class="wf-btn" data-view="phone" aria-pressed="false">Handy</button>
+    </div>
+    <button type="button" class="wf-btn wf-toggle" id="notes-toggle" aria-pressed="true">Notizen</button>
+  </div>
+</div>
+
+<div class="stage"><div class="viewport" id="viewport"><div class="site">
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Was koche ich heute? Zur Startseite">
+        <span class="brand__logo" aria-hidden="true">Logo</span>
+        <span class="brand__text"><span class="brand__kicker">REDLINE</span><span class="brand__name">Was koche ich heute?</span></span>
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="so-funktionierts.html">So funktioniert's</a>
+        <a href="kochideen.html">Kochideen</a>
+        <a href="fuer-dich.html">Für dich</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a class="btn btn--primary btn--small" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+      </nav>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Hauptnavigation mobil">
+      <a href="so-funktionierts.html">So funktioniert's</a>
+      <a href="kochideen.html">Kochideen</a>
+      <a href="fuer-dich.html">Für dich</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a class="btn btn--primary" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1 HERO -->
+    <section class="hero section" id="start" aria-labelledby="h-start">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 1 / 7</span>
+          <span class="note__title">Was ist das hier?</span>
+          <span class="note__src">Quelle: Domain-Name und Slogan «Regionale Zutaten · Globaler Geschmack»</span>
+        </aside>
+        <div class="split">
+          <div>
+            <p class="eyebrow">Regionale Zutaten · Globaler Geschmack</p>
+            <h1 class="h1" id="h-start">Was koche ich heute?</h1>
+            <p class="lead lead--hero">Nimm, was im Kühlschrank ist. Wähle ein Land. Eine Redline-Gewürzmischung macht daraus ein Gericht aus aller Welt.</p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="#finder">Gericht finden</a>
+              <a class="btn btn--secondary" href="#probierset">Probierset · CHF 24.90</a>
+            </div>
+            <ul class="proof">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Erhältlich bei Coop</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>BBQ-Vize-Weltmeister 2015</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Gemischt in der Schweiz</li>
+            </ul>
+          </div>
+          <div class="ph ph--tall" role="img" aria-label="Bildplatzhalter: Redline-Streuer neben dem fertigen Teller">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+            <span>Foto: Redline-Streuer neben dem fertigen Teller<br>(echtes Foto, kein Stockbild)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 SO FUNKTIONIERT'S -->
+    <section class="section section--alt" id="so-gehts" aria-labelledby="h-so">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 2 / 7</span>
+          <span class="note__title">Wie funktioniert das?</span>
+          <span class="note__src">Quelle: heutige Seiten «Anleitung» und «Philosophie» · Vertiefung auf «So funktioniert's»</span>
+        </aside>
+        <p class="eyebrow">Das Redline-System</p>
+        <h2 class="h2" id="h-so">So einfach geht's</h2>
+        <p class="lead">Überall auf der Welt wird mit denselben Zutaten gekocht. Den Unterschied machen die Kochflüssigkeit und das Gewürz.</p>
+        <ol class="g4 list-reset">
+          <li class="card"><div class="step-num" aria-hidden="true">1</div><h3 class="h3">Eine Zutat aus der Region</h3><p class="body">Poulet, Rind, Fisch oder Gemüse. Saisonal und aus der Schweiz.</p></li>
+          <li class="card"><div class="step-num" aria-hidden="true">2</div><h3 class="h3">Eine Kochflüssigkeit</h3><p class="body">Rahm, Tomate, Kokosmilch, Soja oder Wasser. Jede steht für eine Region der Welt.</p></li>
+          <li class="card"><div class="step-num" aria-hidden="true">3</div><h3 class="h3">Ein Redline-Gewürz</h3><p class="body">Die Mischung bringt den typischen Geschmack des Landes. Ohne Abmessen, ohne Suchen.</p></li>
+          <li class="card card--dark"><div class="step-num" aria-hidden="true">=</div><h3 class="h3">Ein Gericht aus aller Welt</h3><p class="body">Gleiche Zutat, andere Flüssigkeit, anderes Gewürz: Schon ist es ein neues Gericht.</p></li>
+        </ol>
+        <div class="g2 mt-16">
+          <p class="example">Poulet + Kokosmilch + <strong>Redline Mekong</strong> = <strong>Kokos-Poulet aus Kambodscha</strong></p>
+          <p class="example">Poulet + Rahm + <strong>Redline Helvetica</strong> = <strong>Geschnetzeltes nach Zürcher Art</strong></p>
+        </div>
+        <div class="claim-row">
+          <p class="claim">«Die Idee, was du kochst, gibt dir das Gewürz. Nicht die Zutat.»</p>
+          <a class="link" href="so-funktionierts.html">So funktioniert's im Detail →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 FINDER -->
+    <section class="section" id="finder" aria-labelledby="h-finder">
+      <div class="wrap" data-finder="teaser">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 3 / 7</span>
+          <span class="note__title">Und was koche ich heute konkret?</span>
+          <span class="note__src">Quelle: «Kochideen» und «Rezepte», eine Datenbasis mit dem Shop · klickbar</span>
+        </aside>
+        <p class="eyebrow">Idee fürs Znacht</p>
+        <h2 class="h2" id="h-finder">Was hast du im Kühlschrank?</h2>
+        <p class="lead">Zwei Klicks, und du hast eine Idee mit dem passenden Gewürz.</p>
+        <div class="finder">
+          <fieldset><legend>1. Was kommt auf den Teller?</legend><div class="chips" data-chips="p"></div></fieldset>
+          <fieldset><legend>2. Wie kochst du?</legend><div class="chips" data-chips="l"></div></fieldset>
+        </div>
+        <div aria-live="polite">
+          <div class="results-head"><p class="results__title" data-results-title></p></div>
+          <div class="results" data-results></div>
+        </div>
+        <div class="mt-24"><a class="link" href="kochideen.html">Alle Kochideen ansehen →</a></div>
+      </div>
+    </section>
+
+    <!-- 4 VERTRAUEN -->
+    <section class="section section--alt" id="ueber-uns" aria-labelledby="h-story">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 4 / 7</span>
+          <span class="note__title">Wer steckt dahinter? Kann ich dem trauen?</span>
+          <span class="note__src">Quelle: «Geschichte des Essens» (gekürzt), «BBQ Vizeweltmeister», «Fair», Partner-Logos · Fakten gemäss Faktenblatt</span>
+        </aside>
+        <div class="split">
+          <div class="ph ph--tall" role="img" aria-label="Bildplatzhalter: Gründer in der Küche">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+            <span>Foto: Gründer in der Küche<br>(echtes Porträt)</span>
+          </div>
+          <div>
+            <p class="eyebrow">Die Geschichte hinter Redline</p>
+            <h2 class="h2 mb-16" id="h-story">Mr. Spice und die fünf Kochflüssigkeiten</h2>
+            <div class="prose">
+              <p>Schon als Kind stand er in den Küchen der Schweiz. Später kochte er in vielen Ländern der Welt: mit Tomaten in Argentinien und Italien, mit Soja in Hongkong und China, mit Kokos in den Tropen.</p>
+              <p>Zurück in der Schweiz suchte er Ordnung in all diesen Küchen und fand sie: Weltweit wird mit nur fünf Flüssigkeiten gekocht. Daraus entstand das Redline-System.</p>
+            </div>
+            <p class="small mt-16 mb-16">[Name des Gründers] · Gründer von Redline</p>
+            <a class="link" href="ueber-uns.html#geschichte">Die ganze Geschichte lesen →</a>
+          </div>
+        </div>
+        <ul class="g4 list-reset mt-40">
+          <li class="card"><h3 class="h3">BBQ-Vize-Weltmeister</h3><p class="body">2015 in Göteborg, mit dem Schweizer BBQ-Team.</p></li>
+          <li class="card"><h3 class="h3">Erhältlich bei Coop</h3><p class="body">Und in Hofläden, Metzgereien und Feinkostläden in der ganzen Schweiz.</p></li>
+          <li class="card"><h3 class="h3">Fair produziert</h3><p class="body">Gemischt und abgefüllt mit Menschen mit Beeinträchtigung. [Ort gemäss Faktenblatt]</p></li>
+          <li class="card"><h3 class="h3">Ohne Zusätze</h3><p class="body">Ohne Geschmacksverstärker, Glutamat und E-Nummern.</p></li>
+        </ul>
+        <p class="eyebrow mt-40 mb-16">Sie vertrauen Redline</p>
+        <ul class="g6 list-reset">
+          <li class="logo-ph">Logo Coop</li><li class="logo-ph">Logo Transgourmet</li><li class="logo-ph">Logo V-ZUG</li>
+          <li class="logo-ph">Logo Schweizer Salinen</li><li class="logo-ph">Logo Bianchi</li><li class="logo-ph">Logo Pistor</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5 PROBIERSET -->
+    <section class="section" id="probierset" aria-labelledby="h-set">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 5 / 7</span>
+          <span class="note__title">Wie fange ich an?</span>
+          <span class="note__src">Übergang zum Shop: Der Button führt direkt auf die Produktseite «Probierset», nicht auf die Shop-Startseite</span>
+        </aside>
+        <div class="offer-box split">
+          <div class="ph ph--43" role="img" aria-label="Bildplatzhalter: die fünf Streuer des Probiersets">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+            <span>Foto: die fünf Streuer des Probiersets</span>
+          </div>
+          <div>
+            <p class="eyebrow">Der einfachste Einstieg</p>
+            <h2 class="h2" id="h-set">Probierset «Um die Welt»</h2>
+            <p class="lead mb-24">Fünf Mischungen aus fünf Regionen. Genug für Dutzende Gerichte.</p>
+            <ul class="checks mb-24">
+              <li><span><strong>Argentinien:</strong> Steak, Burger und Grill</span></li>
+              <li><span><strong>Kentucky BBQ:</strong> Poulet vom Grill</span></li>
+              <li><span><strong>Süd Indien:</strong> Curry mit Kokosmilch</span></li>
+              <li><span><strong>1 für Alles:</strong> die Universalwürze</span></li>
+              <li><span><strong>Helvetica:</strong> Schweizer Klassiker</span></li>
+            </ul>
+            <div class="price"><span class="price__now">CHF 24.90</span><span class="price__was">statt CHF 34.50 einzeln</span></div>
+            <div class="btn-row" style="align-items: center;">
+              <a class="btn btn--primary" href="https://shop.waskocheichheute.ch/de/produkt/probierset-um-die-welt" target="_blank" rel="noopener">Im Shop bestellen</a>
+              <span class="small">Versand: [gemäss Entscheid Versandkosten]</span>
+            </div>
+            <p class="small mt-24">Weitere Sets: <a href="kochideen.html#thema">Welt der Pilze</a> · <a href="kochideen.html">Asia Wok</a> · <a href="kochideen.html">Welt der Currys</a> · <a href="fuer-dich.html#grill">Welt der BBQs</a> · <a href="kochideen.html">Schweizer Klassiker</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 FUER DICH -->
+    <section class="section section--alt" id="fuer-dich" aria-labelledby="h-fuer">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 6 / 7</span>
+          <span class="note__title">Gibt es das auch für mich?</span>
+          <span class="note__src">Quelle: «VeggieEvolution», «Abnehmen mit Redline» (neu: «Leicht kochen»), «Kinder», BBQ-Themen</span>
+        </aside>
+        <p class="eyebrow">Für dich</p>
+        <h2 class="h2 mb-32" id="h-fuer">Für jede Küche das Passende</h2>
+        <div class="g4">
+          <a class="card card--link" href="fuer-dich.html#veggie">
+            <div class="ph card__media" aria-hidden="true"><span>Foto: Selleriesteak</span></div>
+            <div class="card__body"><h3 class="h3">Vegetarisch</h3><p class="body">Behandle Sellerie wie ein Steak: Jedes Fleischgericht geht auch vegetarisch.</p><span class="card__more">Veggie-Ideen →</span></div>
+          </a>
+          <a class="card card--link" href="fuer-dich.html#leicht">
+            <div class="ph card__media" aria-hidden="true"><span>Foto: leichtes Gericht</span></div>
+            <div class="card__body"><h3 class="h3">Leicht kochen</h3><p class="body">Die Kochflüssigkeit entscheidet über die Kalorien. So kochst du leichter, ohne zu verzichten.</p><span class="card__more">Leichte Ideen →</span></div>
+          </a>
+          <a class="card card--link" href="fuer-dich.html#grill">
+            <div class="ph card__media" aria-hidden="true"><span>Foto: Grill</span></div>
+            <div class="card__body"><h3 class="h3">Grill und BBQ</h3><p class="body">Rubs und Marinaden vom BBQ-Vize-Weltmeister.</p><span class="card__more">Grill-Ideen →</span></div>
+          </a>
+          <a class="card card--link" href="fuer-dich.html#familie">
+            <div class="ph card__media" aria-hidden="true"><span>Foto: Familie am Tisch</span></div>
+            <div class="card__body"><h3 class="h3">Familie</h3><p class="body">Mild würzen, die Schärfe kommt am Schluss: So isst die ganze Familie mit.</p><span class="card__more">Familien-Ideen →</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 DRANBLEIBEN -->
+    <section class="section" id="dranbleiben" aria-labelledby="h-stay">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 7 / 7</span>
+          <span class="note__title">Wie bleibe ich dran? Wo bekomme ich es?</span>
+          <span class="note__src">Quelle: «Newsletter», «Verkaufsstellen», «Fragen und Antworten» (Simon Keller)</span>
+        </aside>
+        <h2 class="sr-only" id="h-stay">Dranbleiben</h2>
+        <div class="g3">
+          <div class="card">
+            <h3 class="h3">Jeden Monat eine neue Kochidee</h3>
+            <p class="body mb-16">Ein Thema, fünf Gerichte, dazu Aktionen. Etwa einmal im Monat, jederzeit abbestellbar.</p>
+            <form>
+              <label class="field-label" for="nl-mail">E-Mail-Adresse</label>
+              <div class="field-row">
+                <input class="input" id="nl-mail" type="email" placeholder="name@beispiel.ch" autocomplete="email">
+                <button class="btn btn--primary btn--square" type="submit">Anmelden</button>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h3 class="h3">Im Laden kaufen</h3>
+            <p class="body mb-16">Bei Coop und in Hofläden, Metzgereien und Feinkostläden in der ganzen Schweiz.</p>
+            <a class="link" href="ueber-uns.html#kontakt">Verkaufsstelle finden →</a>
+          </div>
+          <div class="card expert">
+            <div class="avatar" aria-hidden="true">Foto</div>
+            <div>
+              <h3 class="h3">Frag den Experten</h3>
+              <p class="body">Simon Keller hilft bei allen Fragen zu Gewürzen und zum Kochen.</p>
+              <a class="link" href="tel:+41792932203">+41 79 293 22 03</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <aside class="note" aria-label="Wireframe-Notiz">
+        <span class="note__q">Übergang</span>
+        <span class="note__title">Gastro und Handel</span>
+        <span class="note__src">B2B-Besucher werden zu foodkreator.ch geleitet, nicht in den Konsumentenshop</span>
+      </aside>
+      <div class="footer-grid">
+        <div>
+          <span class="brand__kicker">REDLINE</span>
+          <span class="brand__name">Was koche ich heute?</span>
+          <p class="footer-text">FoodKreator AG<br>Sagenhofweg 7, 6030 Ebikon<br>+41 41 442 01 55</p>
+        </div>
+        <div>
+          <p class="footer-head">Entdecken</p>
+          <ul class="footer-links">
+            <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+            <li><a href="kochideen.html">Kochideen</a></li>
+            <li><a href="fuer-dich.html">Für dich</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Service</p>
+          <ul class="footer-links">
+            <li><a href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Shop</a></li>
+            <li><a href="ueber-uns.html#kontakt">Verkaufsstellen</a></li>
+            <li><a href="ueber-uns.html#kontakt">Fragen und Antworten</a></li>
+            <li><a href="ueber-uns.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Für Gastronomie und Handel</p>
+          <p class="footer-text">Produktentwicklung, Eigenmarken und Gastro-Gebinde.</p>
+          <a class="footer-b2b" href="https://www.foodkreator.ch/" target="_blank" rel="noopener">Zu foodkreator.ch →</a>
+        </div>
+      </div>
+      <div class="footer-legal"><span>© FoodKreator AG</span><a href="#start">Impressum</a><a href="#start">AGB</a><a href="#start">Datenschutz</a></div>
+    </div>
+  </footer>
+
+</div></div></div>
+
+<script src="assets/wireframe.js"></script>
+</body>
+</html>

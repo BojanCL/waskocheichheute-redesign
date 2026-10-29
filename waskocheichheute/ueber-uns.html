@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Wireframe · Über uns · waskocheichheute.ch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/wireframe.css">
+</head>
+<body>
+
+<div class="wf-bar" role="region" aria-label="Wireframe-Steuerung">
+  <div class="wf-bar__title">
+    <span class="wf-badge">Wireframe</span>
+    <select class="wf-select" id="page-select" aria-label="Seite wählen">
+      <option value="index.html">Startseite</option>
+      <option value="so-funktionierts.html">So funktioniert's</option>
+      <option value="kochideen.html">Kochideen</option>
+      <option value="kochidee-mekong.html">Kochidee (Beispiel Mekong)</option>
+      <option value="fuer-dich.html">Für dich</option>
+      <option value="ueber-uns.html" selected>Über uns</option>
+    </select>
+    <span class="wf-bar__hint">Entwurf zur Diskussion · Reihenfolge und Inhalte, nicht Design</span>
+  </div>
+  <div class="wf-bar__controls">
+    <div class="wf-seg" role="group" aria-label="Ansicht">
+      <button type="button" class="wf-btn" data-view="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" class="wf-btn" data-view="phone" aria-pressed="false">Handy</button>
+    </div>
+    <button type="button" class="wf-btn wf-toggle" id="notes-toggle" aria-pressed="true">Notizen</button>
+  </div>
+</div>
+
+<div class="stage"><div class="viewport" id="viewport"><div class="site">
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Was koche ich heute? Zur Startseite">
+        <span class="brand__logo" aria-hidden="true">Logo</span>
+        <span class="brand__text"><span class="brand__kicker">REDLINE</span><span class="brand__name">Was koche ich heute?</span></span>
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="so-funktionierts.html">So funktioniert's</a>
+        <a href="kochideen.html">Kochideen</a>
+        <a href="fuer-dich.html">Für dich</a>
+        <a href="ueber-uns.html" aria-current="page">Über uns</a>
+        <a class="btn btn--primary btn--small" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+      </nav>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Hauptnavigation mobil">
+      <a href="so-funktionierts.html">So funktioniert's</a>
+      <a href="kochideen.html">Kochideen</a>
+      <a href="fuer-dich.html">Für dich</a>
+      <a href="ueber-uns.html" aria-current="page">Über uns</a>
+      <a class="btn btn--primary" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1 WER -->
+    <section class="page-hero" id="start" aria-labelledby="h-start">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 1 / 6</span>
+          <span class="note__title">Wer seid ihr?</span>
+          <span class="note__src">Bündelt 13 heutige Unterseiten von «Über uns» auf einer Seite · «Jobs» wandert zu foodkreator.ch</span>
+        </aside>
+        <ol class="crumbs"><li><a href="index.html">Startseite</a></li><li aria-current="page">Über uns</li></ol>
+        <div class="split">
+          <div>
+            <p class="eyebrow">Redline · FoodKreator AG</p>
+            <h1 class="h1 h1--page" id="h-start">Wir machen die Küchen der Welt einfach</h1>
+            <p class="lead lead--hero">Mit Gewürzmischungen, die aus regionalen Zutaten Gerichte aus aller Welt machen. Entwickelt und gemischt in der Schweiz.</p>
+            <ul class="jump" aria-label="Auf dieser Seite">
+              <li><a href="#geschichte">Geschichte</a></li>
+              <li><a href="#haltung">Haltung</a></li>
+              <li><a href="#inhalt">Was drin ist</a></li>
+              <li><a href="#auszeichnungen">Auszeichnungen</a></li>
+              <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="ph ph--43" role="img" aria-label="Bildplatzhalter: Team">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+            <span>Foto: das Team in der Produktion<br>(echtes Foto)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 GESCHICHTE -->
+    <section class="section section--alt" id="geschichte" aria-labelledby="h-story">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 2 / 6</span>
+          <span class="note__title">Wie ist Redline entstanden?</span>
+          <span class="note__src">Quelle: «Geschichte des Essens» (heute rund 3'000 Wörter) · als Erzählung kennzeichnen, daneben echter Name und echtes Foto · lange Fassung als PDF</span>
+        </aside>
+        <div class="split split--top">
+          <div>
+            <p class="eyebrow">Die Geschichte von Mr. Spice</p>
+            <h2 class="h2" id="h-story">Halb Legende, ganz Leidenschaft</h2>
+            <p class="lead mb-24">Wie ein Schweizer Koch um die Welt reiste, Schiffbruch erlitt und dabei entdeckte, dass alle Küchen der Welt auf fünf Flüssigkeiten beruhen.</p>
+            <div class="ph ph--43 mb-24" role="img" aria-label="Bildplatzhalter: Gründer">
+              <span>Foto: Gründer<br>[Name des Gründers]</span>
+            </div>
+            <a class="btn btn--secondary" href="#geschichte">Ganze Geschichte lesen (PDF)</a>
+          </div>
+          <ol class="chapters">
+            <li><h3>In den Küchen der Heimat</h3><p>Schon als Kind lernt er in Schweizer Restaurants, mit dem Eigengeschmack der Zutaten zu arbeiten. Und er merkt: Milch prägt die Schweizer Küche.</p></li>
+            <li><h3>Kochen auf der ganzen Welt</h3><p>Mit Tomaten in Argentinien und Italien, mit Soja in Hongkong und China, mit Kokos in den Tropen. Seine Küchenpartner nennen ihn bald «Mr. Spice».</p></li>
+            <li><h3>Die Heimreise</h3><p>Um Ordnung in all das Gelernte zu bringen, nimmt er das Schiff von Australien über Amerika zurück in die Schweiz.</p></li>
+            <li><h3>Schiffbruch</h3><p>Ein Sturm, eine Nacht auf einem Floss aus Trümmern, dann das Erwachen an einem fremden Strand.</p></li>
+            <li><h3>Ein Essstand am Hafen</h3><p>Mit Tamatu eröffnet er einen Stand: «Grillen oder Kochen? 1001 Gerichte!» Gäste kommen von der ganzen Insel.</p></li>
+            <li><h3>Die Entdeckung</h3><p>Im Gespräch mit einem japanischen Gast über Soja wird ihm klar: Es gibt nur fünf Kochflüssigkeiten. Daraus entsteht das Redline-System.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 HALTUNG -->
+    <section class="section" id="haltung" aria-labelledby="h-values">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 3 / 6</span>
+          <span class="note__title">Woran glaubt ihr?</span>
+          <span class="note__src">Quelle: «Fair», «Anbau», «Transport», «Engagement / Sponsoring» · vier Seiten zu einer · Ort und Anzahl Mitarbeitende gemäss Faktenblatt (heute widersprüchlich)</span>
+        </aside>
+        <p class="eyebrow">Unsere Haltung</p>
+        <h2 class="h2 mb-32" id="h-values">Gut für den Teller und darüber hinaus</h2>
+        <div class="g2">
+          <article class="card">
+            <h3 class="h3">Fair produziert</h3>
+            <p class="body">Unsere Gewürze werden gemischt, abgefüllt und verschickt in Zusammenarbeit mit Menschen mit Beeinträchtigung. So entsteht ein sinnvoller Arbeitsalltag. [Partner, Ort und Anzahl gemäss Faktenblatt]</p>
+          </article>
+          <article class="card">
+            <h3 class="h3">Eigene Pfefferfarm in Kambodscha</h3>
+            <p class="body">Im Peppcorn-Projekt wächst unser Kampot-Pfeffer, ohne künstliche Dünger und Pestizide. Sieben Fachkräfte sind fest angestellt, in der Erntezeit bis zu 20 weitere.</p>
+          </article>
+          <article class="card">
+            <h3 class="h3">Regional einkaufen, global würzen</h3>
+            <p class="body">Gewürze machen nur rund 2 Prozent einer Mahlzeit aus. Wer die Grundzutaten regional kauft und nur die Gewürze importiert, spart viele Transporte.</p>
+          </article>
+          <article class="card">
+            <h3 class="h3">Engagement</h3>
+            <p class="body">Wir unterstützen die Aufforstung mit Cookswell Jikos in Kenia und den Schutz von Wildtieren vor Wilderei.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 INHALT -->
+    <section class="section section--alt" id="inhalt" aria-labelledby="h-inside">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 4 / 6</span>
+          <span class="note__title">Was ist drin und was nicht?</span>
+          <span class="note__src">Quelle: «Wir verzichten auf», «Gesundheit», «Kinder» · bereinigt: «Schärfe», «Soja», «Fisch», «Nüsse» gestrichen, weil sie Scharfmacher, Sojasauce und Nuss-Snacks widersprechen · gemäss Faktenblatt prüfen</span>
+        </aside>
+        <div class="split split--top">
+          <div>
+            <p class="eyebrow">Unsere Gewürzmischungen</p>
+            <h2 class="h2 mb-24" id="h-inside">Ohne Zusätze. Mit Schweizer Salz.</h2>
+            <ul class="checks checks--cols2">
+              <li>Ohne Konservierungsstoffe</li>
+              <li>Ohne Geschmacksverstärker</li>
+              <li>Ohne Glutamat</li>
+              <li>Ohne Hefe</li>
+              <li>Ohne Gluten</li>
+              <li>Ohne Palmöl</li>
+              <li>Ohne Farbstoffe</li>
+              <li>Ohne E-Nummern</li>
+              <li>Ohne Gentechnik</li>
+            </ul>
+          </div>
+          <div style="display: grid; gap: 16px;">
+            <div class="card">
+              <h3 class="h3">Salz und Jod</h3>
+              <p class="body">Wir verwenden ausschliesslich Schweizer Salz mit Jod. Lebensmittel aus der Schweiz enthalten von Natur aus wenig Jod.</p>
+            </div>
+            <div class="card">
+              <h3 class="h3">Allergene</h3>
+              <p class="body">Die einzigen Allergene in unseren Gewürzmischungen sind Senf und Sesam. Beide sind klar deklariert.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 AUSZEICHNUNGEN -->
+    <section class="section" id="auszeichnungen" aria-labelledby="h-awards">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 5 / 6</span>
+          <span class="note__title">Kann ich euch vertrauen?</span>
+          <span class="note__src">Quelle: «BBQ Vizeweltmeister» und Partner-Logos · Logos verlinken nicht mehr auf fremde Websites</span>
+        </aside>
+        <div class="split split--top">
+          <div>
+            <p class="eyebrow">Ausgezeichnet</p>
+            <h2 class="h2 mb-24" id="h-awards">Vom Grill an die Weltmeisterschaft</h2>
+            <ol class="chapters">
+              <li><h3>2013 · Swiss BBQ Masters, Biel</h3><p>1. Rang Fingerfood, 2. Rang Fisch, 3. Rang Spare Ribs</p></li>
+              <li><h3>2014 · Swiss BBQ Masters, Küssnacht</h3><p>1. Rang mit Beilage, 2. Rang Fingerfood</p></li>
+              <li><h3>2015 · BBQ-Weltmeisterschaft, Göteborg</h3><p>Vize-Weltmeister mit dem Schweizer BBQ-Team</p></li>
+              <li><h3>Jack Daniel's World Championship, USA</h3><p>2. Rang Homecooking mit dem Schweizer BBQ-Team</p></li>
+            </ol>
+          </div>
+          <div>
+            <p class="eyebrow">Sie vertrauen Redline</p>
+            <ul class="g3 list-reset" style="gap: 12px;">
+              <li class="logo-ph">Logo Coop</li><li class="logo-ph">Logo Transgourmet</li><li class="logo-ph">Logo V-ZUG</li>
+              <li class="logo-ph">Logo Schweizer Salinen</li><li class="logo-ph">Logo Bianchi</li><li class="logo-ph">Logo Pistor</li>
+              <li class="logo-ph">Logo Confiserie Bachmann</li><li class="logo-ph">Logo Wauwiler</li><li class="logo-ph">Logo Dyhrberg</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 KONTAKT -->
+    <section class="section section--alt" id="kontakt" aria-labelledby="h-contact">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 6 / 6</span>
+          <span class="note__title">Wie erreiche ich euch?</span>
+          <span class="note__src">Quelle: «Kontakt», «Fragen und Antworten», «Verkaufsstellen» · Kontaktformular ohne versteckte Newsletter-Einwilligung · B2B und Jobs zu foodkreator.ch</span>
+        </aside>
+        <h2 class="h2 mb-32" id="h-contact">Kontakt</h2>
+        <div class="split split--top">
+          <form class="card" aria-labelledby="h-form">
+            <h3 class="h3 mb-16" id="h-form">Schreib uns</h3>
+            <div class="form-grid">
+              <div><label class="field-label" for="c-first">Vorname</label><input class="input" id="c-first" type="text" autocomplete="given-name"></div>
+              <div><label class="field-label" for="c-last">Nachname</label><input class="input" id="c-last" type="text" autocomplete="family-name"></div>
+              <div class="full"><label class="field-label" for="c-mail">E-Mail-Adresse</label><input class="input" id="c-mail" type="email" autocomplete="email"></div>
+              <div class="full"><label class="field-label" for="c-msg">Nachricht</label><textarea class="textarea" id="c-msg"></textarea></div>
+              <div class="full"><button class="btn btn--primary" type="submit">Nachricht senden</button></div>
+            </div>
+          </form>
+          <div style="display: grid; gap: 16px;">
+            <div class="card">
+              <h3 class="h3">FoodKreator AG</h3>
+              <p class="body">Sagenhofweg 7<br>6030 Ebikon<br><a href="tel:+41414420155">+41 41 442 01 55</a><br><a href="mailto:info@foodkreator.ch">info@foodkreator.ch</a></p>
+            </div>
+            <div class="card expert">
+              <div class="avatar" aria-hidden="true">Foto</div>
+              <div>
+                <h3 class="h3">Frag den Experten</h3>
+                <p class="body">Simon Keller hilft bei allen Fragen zu Gewürzen und zum Kochen.</p>
+                <a class="link" href="tel:+41792932203">+41 79 293 22 03</a>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="h3">Im Laden kaufen</h3>
+              <p class="body mb-16">Bei Coop und in Hofläden, Metzgereien und Feinkostläden in der ganzen Schweiz.</p>
+              <a class="link" href="#kontakt">Alle Verkaufsstellen →</a>
+            </div>
+            <div class="card card--flat">
+              <h3 class="h3">Gastronomie, Handel und Jobs</h3>
+              <p class="body mb-16">Produktentwicklung, Eigenmarken, Gastro-Gebinde und offene Stellen.</p>
+              <a class="link" href="https://www.foodkreator.ch/" target="_blank" rel="noopener">Zu foodkreator.ch →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <span class="brand__kicker">REDLINE</span>
+          <span class="brand__name">Was koche ich heute?</span>
+          <p class="footer-text">FoodKreator AG<br>Sagenhofweg 7, 6030 Ebikon<br>+41 41 442 01 55</p>
+        </div>
+        <div>
+          <p class="footer-head">Entdecken</p>
+          <ul class="footer-links">
+            <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+            <li><a href="kochideen.html">Kochideen</a></li>
+            <li><a href="fuer-dich.html">Für dich</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Service</p>
+          <ul class="footer-links">
+            <li><a href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Shop</a></li>
+            <li><a href="#kontakt">Verkaufsstellen</a></li>
+            <li><a href="#kontakt">Fragen und Antworten</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Für Gastronomie und Handel</p>
+          <p class="footer-text">Produktentwicklung, Eigenmarken und Gastro-Gebinde.</p>
+          <a class="footer-b2b" href="https://www.foodkreator.ch/" target="_blank" rel="noopener">Zu foodkreator.ch →</a>
+        </div>
+      </div>
+      <div class="footer-legal"><span>© FoodKreator AG</span><a href="#start">Impressum</a><a href="#start">AGB</a><a href="#start">Datenschutz</a></div>
+    </div>
+  </footer>
+
+</div></div></div>
+
+<script src="assets/wireframe.js"></script>
+</body>
+</html>

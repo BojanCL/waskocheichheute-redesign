@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Das Gewürzglas · Was koche ich heute?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/welten.css">
+<style>
+  .g-intro { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 110px 0 60px; overflow: hidden; }
+  .g-intro::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 60% at 72% 58%, rgba(246, 142, 16, .25), transparent 70%); }
+  .g-intro__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  .g-shelf { position: relative; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 26px; }
+  .g-shelf::after { content: ""; position: absolute; left: 4%; right: 4%; bottom: 0; height: 26px; border-radius: 8px; background: linear-gradient(#c98a4f, #9b6a3e); box-shadow: 0 18px 30px rgba(38, 31, 31, .2); }
+  .g-shelf .jar-svg { width: clamp(70px, 8.5vw, 124px); height: auto; margin: 0 -4px; filter: drop-shadow(0 18px 14px rgba(38, 31, 31, .25)); transition: transform .5s var(--ease); }
+  .g-shelf .jar-svg:nth-child(odd) { animation: float 6s ease-in-out infinite; }
+  .g-shelf .jar-svg:nth-child(even) { animation: float 7s ease-in-out -3s infinite; }
+  .g-shelf .jar-svg:hover { transform: translateY(-24px) rotate(-6deg); }
+
+  .g-stage { position: relative; height: 100vh; overflow: hidden; transition: background-color .6s; }
+  .g-bg { position: absolute; inset: 0; }
+  .g-bg span { position: absolute; inset: 0; opacity: 0; }
+  .g-art { position: absolute; right: 2vw; top: 50%; height: min(96vh, 980px); width: auto; transform: translateY(-50%); overflow: visible; }
+  .g-panel { position: absolute; left: var(--g); top: 50%; transform: translateY(-50%); width: min(470px, 38vw); z-index: 10; }
+
+  @media (max-width: 860px) {
+    .g-intro__grid { grid-template-columns: 1fr; }
+    .g-shelf { order: -1; }
+    .g-panel { top: 72px; left: 12px; right: 12px; width: auto; transform: none; }
+    .g-panel .wp-card { padding: 16px 18px; border-radius: 22px; }
+    .g-panel .wp-title { font-size: 2.5rem; }
+    .g-panel .wp-text { font-size: 14px; }
+    .g-art { height: 58vh; right: auto; left: 50%; top: auto; bottom: 58px; transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body id="top">
+<header data-header></header>
+
+<main>
+  <section class="g-intro" aria-labelledby="h-intro">
+    <div class="wrap g-intro__grid">
+      <div>
+        <p class="eyebrow">Regionale Zutaten · Globaler Geschmack</p>
+        <h1 class="display" id="h-intro">In jedem Glas steckt eine <em>Welt.</em></h1>
+        <p class="lead">Was koche ich heute? Nimm, was im Kühlschrank ist, und öffne ein Glas. Die Redline-Mischung bringt den Geschmack eines ganzen Landes in deine Pfanne.</p>
+        <div class="btn-row">
+          <a class="btn" href="#welten">Glas öffnen
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <a class="btn btn--ghost" href="#probierset">Probierset · CHF 24.90</a>
+        </div>
+      </div>
+      <div class="g-shelf" id="shelf" role="img" aria-label="Fünf Redline-Gläser im Regal"></div>
+    </div>
+  </section>
+
+  <section class="g-stage" id="welten" aria-label="Fünf Gläser, fünf Welten">
+    <div class="g-bg" id="bg"></div>
+    <svg class="g-art" id="art" viewBox="-330 -60 1260 1220" aria-hidden="true"></svg>
+    <div class="g-panel"><div class="wp-card"><div class="wp-stack" id="panels" aria-live="polite"></div></div></div>
+    <nav class="rail" id="rail" aria-label="Welten"></nav>
+  </section>
+  <div id="static"></div>
+
+  <div data-outro></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/welten.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Art, Wl = window.Welten, W = Wl.worlds;
+
+  document.getElementById('shelf').innerHTML = W.map(function (w) { return A.jarSvg({ name: w.spice, spice: w.spiceColor, dish: w.sauce }); }).join('');
+
+  if (!Wl.motion) {
+    document.getElementById('welten').remove();
+    Wl.staticWorlds(document.getElementById('static'));
+    return;
+  }
+  var gsap = window.gsap;
+
+  /* ---------- Zutaten, die aus dem Glas fliegen ---------- */
+  function g(inner, s) { return '<g transform="scale(' + (s || 1) + ')">' + inner + '</g>'; }
+  var ITEMS = {
+    tomato: '<circle r="46" fill="#d6452b"/><circle cx="-14" cy="-14" r="12" fill="#f58a70"/><path d="M0 -46l6 -14l10 8l-12 6l14 6l-14 4l-4 14l-4 -14l-14 -4l14 -6l-12 -6l10 -8z" fill="#2f6f2a"/>',
+    chili: '<path d="M-50 20C-20 30 30 20 46 -30C50 -42 62 -40 58 -26C44 30 -6 50 -52 34Z" fill="#d7261e"/><path d="M52 -30l6 -18l10 4l-8 16z" fill="#3f7d3a"/>',
+    garlic: '<path d="M0 -50C10 -30 44 -16 44 14C44 40 20 50 0 50C-20 50 -44 40 -44 14C-44 -16 -10 -30 0 -50Z" fill="#f6f1e6" stroke="#d9cfbd" stroke-width="3"/><path d="M0 -40V48M-22 -10C-24 20 -14 40 -4 48M22 -10C24 20 14 40 4 48" fill="none" stroke="#d9cfbd" stroke-width="3"/>',
+    cheese: '<path d="M-56 30L56 30L56 -6L-40 -34Z" fill="#f6c445"/><path d="M-56 30L-40 -34L56 -6" fill="none" stroke="#e0a92e" stroke-width="3"/><circle cx="-6" cy="8" r="9" fill="#e0a92e"/><circle cx="26" cy="14" r="6" fill="#e0a92e"/><circle cx="-34" cy="18" r="5" fill="#e0a92e"/>',
+    flower: (function () { var p = ''; for (var i = 0; i < 8; i++) p += '<ellipse cx="0" cy="-26" rx="10" ry="22" fill="#ffffff" stroke="#e4e4e4" stroke-width="2" transform="rotate(' + i * 45 + ')"/>'; return p + '<circle r="12" fill="#f6c445"/>'; })(),
+    jug: '<g transform="translate(60 -50)">' + A.vessel('norden') + '</g>',
+    coconut: '<g transform="translate(56 -30)">' + A.vessel('tropen') + '</g>',
+    lime: '<circle r="40" fill="#7fb342"/><circle r="32" fill="#d8ef9a"/><path d="M0 0L0 -32M0 0L28 -15M0 0L28 15M0 0L0 32M0 0L-28 15M0 0L-28 -15" stroke="#9cc66f" stroke-width="3"/>',
+    leaf: '<path d="M-60 30Q0 -60 60 -30Q0 60 -60 30Z" fill="#2e8b57"/><path d="M-56 28L56 -28" stroke="#5fbf86" stroke-width="3"/>',
+    lantern: '<path d="M0 -60V-40" stroke="#1d1530" stroke-width="3"/><rect x="-26" y="-40" width="52" height="66" rx="22" fill="#e0483e"/><path d="M-9 -38V24M9 -38V24" stroke="#b8332b" stroke-width="3"/><rect x="-16" y="-46" width="32" height="10" rx="4" fill="#1d1530"/><rect x="-16" y="22" width="32" height="10" rx="4" fill="#1d1530"/>',
+    soy: '<g transform="translate(36 -80)">' + A.vessel('fernost') + '</g>',
+    sticks: '<path d="M-60 40L50 -50M-48 48L62 -38" stroke="#b5763d" stroke-width="8" stroke-linecap="round"/>',
+    flame: '<path d="M0 50C-40 30 -30 -10 0 -60C30 -10 40 30 0 50Z" fill="#f68e10"/><path d="M0 46C-20 30 -14 6 0 -20C14 6 20 30 0 46Z" fill="#ffd166"/>',
+    sausage: '<rect x="-60" y="-18" width="120" height="36" rx="18" fill="#a0522d"/><path d="M-30 -14l-10 28M0 -16l-10 32M30 -14l-10 28" stroke="#5a2c14" stroke-width="5" stroke-linecap="round"/>',
+    corn: '<path d="M-22 50C-40 0 -20 -50 0 -60C20 -50 40 0 22 50Z" fill="#f6c445"/><path d="M-14 -36H14M-20 -16H20M-22 4H22M-20 24H20" stroke="#e0a92e" stroke-width="3"/><path d="M-22 50C-50 20 -50 -10 -38 -30C-30 0 -20 30 0 52Z" fill="#7fb35c"/>'
+  };
+  var SETS = {
+    norden: [['jug', 1], ['cheese', 1.1], ['flower', 1]],
+    sueden: [['tomato', 1.15], ['chili', 1.1], ['garlic', 1]],
+    tropen: [['coconut', 1], ['lime', 1.05], ['leaf', 1.2]],
+    fernost: [['lantern', 1.15], ['soy', 0.95], ['sticks', 1]],
+    feuer: [['flame', 1.2], ['sausage', 1.05], ['corn', 1.05]]
+  };
+  var SPOTS = [[-170, 300, -14], [770, 520, 12], [-150, 900, 8]];
+
+  /* ---------- Das grosse Glas ---------- */
+  var CROP = { norden: 780, sueden: 790, tropen: 880, fernost: 900, feuer: 820 };
+  var BODY = { x: 40, y: 250, w: 520, h: 820 };
+  var svg = '<defs>' +
+    '<clipPath id="body"><rect x="40" y="250" width="520" height="820" rx="70"/></clipPath>' +
+    '<linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".2"/><stop offset=".12" stop-color="#fff" stop-opacity=".55"/><stop offset=".22" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient>' +
+    '<radialGradient id="jsh"><stop offset=".55" stop-color="#261f1f" stop-opacity=".35"/><stop offset="1" stop-color="#261f1f" stop-opacity="0"/></radialGradient>' +
+    W.map(function (w, i) { return '<clipPath id="fill' + i + '"><rect class="fillrect" x="40" y="250" width="520" height="820"/></clipPath>'; }).join('') +
+    '</defs>';
+  svg += '<ellipse cx="300" cy="1100" rx="330" ry="48" fill="url(#jsh)"/>';
+  svg += '<g class="items">' + W.map(function (w) {
+    return '<g class="iset">' + SETS[w.id].map(function (it, k) {
+      return '<g class="item" data-k="' + k + '"><g class="float" style="animation-delay:-' + (k * 2) + 's">' + g(ITEMS[it[0]], it[1]) + '</g></g>';
+    }).join('') + '</g>';
+  }).join('') + '</g>';
+  svg += '<g id="jar">';
+  svg += '<g clip-path="url(#body)"><rect x="40" y="250" width="520" height="820" fill="#fffaf3"/>';
+  W.forEach(function (w, i) {
+    var x0 = CROP[w.id];
+    svg += '<g class="wscene" clip-path="url(#fill' + i + ')"><svg x="40" y="250" width="520" height="820" viewBox="' + x0 + ' 0 640 900" preserveAspectRatio="xMidYMax slice">' + A.scene(w.id) + '</svg></g>';
+    svg += '<rect class="fillband" x="40" y="1070" width="520" height="16" fill="' + w.spiceColor + '"/>';
+  });
+  svg += '<rect x="40" y="250" width="520" height="150" fill="#fffdf8"/>' +
+    '<text x="300" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="800" letter-spacing="7" fill="#d7261e">REDLINE</text>';
+  W.forEach(function (w) {
+    svg += '<text class="jname" x="300" y="372" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif" font-size="' + Math.min(80, Math.round(470 / (w.spice.length * 0.58))) + '" font-weight="800" letter-spacing="-2" fill="#1f2a44">' + w.spice + '</text>';
+  });
+  svg += '<path d="M40 400C140 380 220 420 320 400S480 380 560 400L560 412C460 394 380 432 300 414S120 396 40 414Z" fill="#2d78c4"/>' +
+    '<path d="M40 1020C160 990 260 1050 380 1020S520 1000 560 1010L560 1070L40 1070Z" fill="#2d78c4"/><path d="M40 1040C170 1016 270 1066 390 1040S530 1026 560 1034L560 1070L40 1070Z" fill="#8cc6ef"/>' +
+    '<rect x="40" y="250" width="520" height="820" fill="url(#glass)"/></g>' +
+    '<rect x="40" y="250" width="520" height="820" rx="70" fill="none" stroke="#261f1f" stroke-opacity=".16" stroke-width="5"/>' +
+    '<rect x="22" y="206" width="556" height="56" rx="18" fill="#e4dfd6"/>';
+  var ridges = ''; for (var x = 92; x <= 508; x += 26) ridges += '<line x1="' + x + '" y1="66" x2="' + x + '" y2="200" stroke="#e2ddd3" stroke-width="9" stroke-linecap="round"/>';
+  svg += '<g id="cap"><rect x="52" y="40" width="496" height="180" rx="40" fill="#f6f4ef"/>' + ridges + '<rect x="52" y="40" width="496" height="40" rx="20" fill="#ffffff"/></g>';
+  svg += '</g>';
+  var art = document.getElementById('art');
+  art.innerHTML = svg;
+
+  var fills = art.querySelectorAll('.fillrect'), bands = art.querySelectorAll('.fillband'), names = art.querySelectorAll('.jname');
+  var sets = art.querySelectorAll('.iset'), jar = art.querySelector('#jar'), cap = art.querySelector('#cap');
+
+  /* ---------- Hintergrund und Texte ---------- */
+  var bg = document.getElementById('bg');
+  bg.innerHTML = W.map(function (w) { return '<span style="background: radial-gradient(70% 70% at 70% 55%, ' + w.sky + ', ' + w.bg + ' 75%)"></span>'; }).join('');
+  var bgs = bg.querySelectorAll('span');
+  var panelsEl = document.getElementById('panels');
+  panelsEl.innerHTML = W.map(Wl.panel).join('');
+  var pn = panelsEl.querySelectorAll('.wp');
+
+  /* ---------- Anfangszustand ---------- */
+  fills.forEach(function (r) { r.setAttribute('y', 1070); r.setAttribute('height', 0); });
+  gsap.set(names, { opacity: 0, y: 30 });
+  gsap.set(bgs, { opacity: 0 });
+  gsap.set(bgs[0], { opacity: 1 });
+  gsap.set(pn, { autoAlpha: 0, y: 40 });
+  gsap.set(pn[0], { autoAlpha: 1, y: 0 });
+  gsap.set(art.querySelectorAll('.item'), { x: 300, y: 60, scale: 0.2, opacity: 0, transformOrigin: '50% 50%' });
+  gsap.set(jar, { transformOrigin: '300px 1080px' });
+  gsap.set(cap, { transformOrigin: '548px 210px' });
+
+  var setActive = Wl.rail(document.getElementById('rail'), W.map(function (w) { return { label: w.name, dot: w.spiceColor }; }), function (i) {
+    window.scrollTo({ top: tl.scrollTrigger.labelToScroll('w' + i), behavior: 'smooth' });
+  });
+
+  var labels = [], U = 1;
+  var snap = Wl.snapper(function () { return labels.map(function (t) { return t / tl.duration(); }); });
+  var tl = gsap.timeline({
+    defaults: { ease: 'power2.inOut' },
+    scrollTrigger: {
+      trigger: '#welten', start: 'top top',
+      end: function () { return '+=' + Math.round(window.innerHeight * W.length * 1.15); },
+      pin: true, scrub: 0.8, invalidateOnRefresh: true,
+      snap: { snapTo: snap.snapTo, inertia: false, duration: { min: 0.3, max: 0.9 }, delay: 0.12, ease: 'power2.inOut' },
+      onUpdate: function (self) {
+        snap.track(self);
+        var t = tl.time(), idx = 0;
+        labels.forEach(function (lt, k) { if (t >= lt - U * 0.5) idx = k; });
+        setActive(idx);
+      }
+    }
+  });
+
+  W.forEach(function (w, i) {
+    var T = i * U;
+    var items = sets[i].querySelectorAll('.item');
+    if (i) {
+      var old = sets[i - 1].querySelectorAll('.item');
+      tl.to(old, { x: 300, y: 60, scale: 0.2, rotation: 0, opacity: 0, duration: 0.2, stagger: 0.03, ease: 'power2.in' }, T)
+        .to(names[i - 1], { opacity: 0, y: -30, duration: 0.14 }, T + 0.1)
+        .to(pn[i - 1], { autoAlpha: 0, y: -30, duration: 0.12 }, T)
+        .to(bgs[i], { opacity: 1, duration: 0.3, ease: 'none' }, T + 0.1)
+        .to(jar, { rotation: -4, duration: 0.1, ease: 'sine.inOut' }, T + 0.08)
+        .to(jar, { rotation: 3, duration: 0.1, ease: 'sine.inOut' }, T + 0.18)
+        .to(jar, { rotation: 0, duration: 0.12, ease: 'sine.out' }, T + 0.28);
+    }
+    tl.to(cap, { rotation: 18, y: -60, duration: 0.12, ease: 'power2.out' }, T + 0.02)
+      .to(fills[i], { attr: { y: 250, height: 820 }, duration: 0.45, ease: 'power1.inOut' }, T + 0.12)
+      .fromTo(bands[i], { attr: { y: 1070 }, opacity: 1 }, { attr: { y: 240 }, duration: 0.45, ease: 'power1.inOut' }, T + 0.12)
+      .to(bands[i], { opacity: 0, duration: 0.05 }, T + 0.55)
+      .to(names[i], { opacity: 1, y: 0, duration: 0.16, ease: 'power2.out' }, T + 0.3)
+      .fromTo(pn[i], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: 'power2.out' }, T + 0.16);
+    Array.prototype.forEach.call(items, function (it, k) {
+      tl.to(it, { x: SPOTS[k][0], y: SPOTS[k][1], rotation: SPOTS[k][2], scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.5)' }, T + 0.32 + k * 0.06);
+    });
+    tl.to(cap, { rotation: 0, y: 0, duration: 0.12, ease: 'power2.in' }, T + 0.62);
+    labels.push(T + 0.8);
+    tl.addLabel('w' + i, T + 0.8);
+  });
+  tl.to({}, { duration: 0.2 });
+})();
+</script>
+</body>
+</html>

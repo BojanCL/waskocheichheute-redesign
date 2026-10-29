@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kochideen · Was koche ich heute?</title>
+<meta name="description" content="Rund 400 Kochideen zu über 30 Redline-Gewürzen. Sortiert nach dem, was du zu Hause hast: Zutat, Zubereitung und Region.">
+<meta name="theme-color" content="#fdf1e6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/welten.css">
+<link rel="stylesheet" href="assets/start.css">
+<link rel="stylesheet" href="assets/page.css">
+<link rel="stylesheet" href="assets/ideen.css">
+</head>
+<body>
+<a class="sr-only" href="#inhalt">Zum Inhalt springen</a>
+
+<!-- ============================== KOPF ============================== -->
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="startseite.html" aria-label="Redline · Was koche ich heute? Zur Startseite"><img src="assets/img/logo.svg" alt="" width="174" height="136"></a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="so-funktionierts.html">So funktioniert's</a>
+      <a href="kochideen.html" aria-current="page">Kochideen</a>
+      <a href="fuer-dich.html">Für dich</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a class="btn btn--orange btn--small" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+    </nav>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Menü öffnen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Hauptnavigation mobil">
+    <a href="so-funktionierts.html">So funktioniert's</a>
+    <a href="kochideen.html" aria-current="page">Kochideen</a>
+    <a href="fuer-dich.html">Für dich</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a class="btn btn--orange" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+  </nav>
+  <nav class="subnav" aria-label="Auf dieser Seite">
+    <div class="wrap subnav__in">
+      <span class="subnav__label">Auf dieser Seite</span>
+      <ul class="subnav__list">
+        <li><a href="#finden">Idee finden</a></li>
+        <li><a href="#thema">Thema des Monats</a></li>
+        <li><a href="#gewuerz">Nach Gewürz</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="inhalt">
+
+  <!-- ============================== 1 · WAS FINDE ICH HIER? ============================== -->
+  <section class="ph ph--ideen" aria-labelledby="h-top">
+    <div class="wrap ih">
+      <div class="ph__head">
+        <ol class="crumbs"><li><a href="startseite.html">Startseite</a></li><li aria-current="page">Kochideen</li></ol>
+        <p class="eyebrow">Kochideen</p>
+        <h1 id="h-top">Rund 400 Kochideen für das, was du zu Hause <em>hast.</em></h1>
+        <p class="lead">Zu über 30 Redline-Gewürzen. Wähle, was auf den Teller kommt und wie du kochst, und du siehst passende Gerichte.</p>
+      </div>
+      <div class="ih__art" data-art="ideen-hero" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============================== 2 · IDEE FINDEN ============================== -->
+  <section class="sec sec--tight" id="finden" aria-labelledby="h-find" data-ideen>
+    <div class="wrap">
+      <h2 class="sr-only" id="h-find">Idee finden</h2>
+      <div class="finden">
+        <div class="controls ff">
+          <fieldset class="q"><legend><b>1</b>Was kommt auf den Teller?</legend><div class="opts" data-f="p"></div></fieldset>
+          <fieldset class="q"><legend><b>2</b>Wie kochst du?</legend><div class="opts" data-f="l"></div></fieldset>
+          <fieldset class="q"><legend><b>3</b>Aus welcher Region?</legend><div class="opts" data-f="r"></div></fieldset>
+          <button class="ff__reset" type="button" data-reset hidden>Filter zurücksetzen</button>
+        </div>
+        <div class="ideas">
+          <div class="ideas__head">
+            <p class="ideas__title" data-ideas-title aria-live="polite"></p>
+            <button class="ff__reset" type="button" data-reset hidden>Filter zurücksetzen</button>
+          </div>
+          <div class="ideas__grid" data-ideas></div>
+          <div class="ideas__more" data-more hidden><button class="btn btn--ghost" type="button"></button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 3 · THEMA DES MONATS ============================== -->
+  <section class="sec sec--dark theme" id="thema" aria-labelledby="h-theme">
+    <div class="wrap">
+      <div class="theme__head">
+        <div>
+          <p class="eyebrow" data-reveal>Thema des Monats · Die Welt der Pilze</p>
+          <h2 class="h2" id="h-theme" data-reveal>Im Herbst: fünf Pilzgerichte mit fünf <em>Gewürzen.</em></h2>
+        </div>
+        <div class="theme__offer" data-reveal>
+          <p class="lead">Von cremig bis kräftig. Die fünf Gewürze gibt es zusammen als Set.</p>
+          <p class="theme__price"><b>CHF 24.90</b><span>alle fünf Gewürze als Set</span></p>
+          <div class="btn-row">
+            <a class="btn btn--orange" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Set im Shop kaufen</a>
+            <a class="btn btn--ghost-light" href="#">Rezepte als PDF</a>
+          </div>
+        </div>
+      </div>
+      <div class="theme__row" data-theme></div>
+    </div>
+  </section>
+
+  <!-- ============================== 4 · NACH GEWÜRZ ============================== -->
+  <section class="sec sec--cream" id="gewuerz" aria-labelledby="h-spice">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow" data-reveal>Ein Gewürz, fünf Gerichte</p>
+          <h2 class="h2" id="h-spice" data-reveal>Du hast schon ein Gewürz? Zu jedem gibt es fünf <em>Gerichte.</em></h2>
+        </div>
+        <p class="lead" data-reveal>Mit Fleisch, mit Fisch, vegetarisch, ein lokales Gericht und eines fürs Wochenende.</p>
+      </div>
+      <div class="gw-grid" data-by-spice></div>
+      <p class="gw-all"><a class="link" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Alle Gewürze von A bis Z
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+    </div>
+  </section>
+
+  <!-- ============================== 5 · NEWSLETTER ============================== -->
+  <section class="sec sec--tight" id="newsletter" aria-labelledby="h-nl">
+    <div class="wrap">
+      <div class="news news--wide" data-reveal>
+        <p class="eyebrow" style="color: var(--orange);">Newsletter</p>
+        <h2 class="h2" id="h-nl">Jeden Monat ein neues <em>Thema</em> per E-Mail.</h2>
+        <p>Fünf Gerichte, ein Set und eine Aktion. Etwa einmal im Monat in deinem Postfach. Jederzeit abbestellbar.</p>
+        <form>
+          <label class="sr-only" for="nl">E-Mail-Adresse</label>
+          <input id="nl" type="email" placeholder="deine@email.ch" autocomplete="email" required>
+          <button class="btn btn--orange" type="submit">Anmelden</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================== FUSS ============================== -->
+<footer class="foot2">
+  <div class="wrap">
+    <p class="foot2__claim">Regionale Zutaten. Globaler <em>Geschmack.</em></p>
+    <div class="foot2__grid">
+      <div>
+        <img class="foot2__logo" src="assets/img/logo.svg" alt="Redline · Was koche ich heute?" width="174" height="136">
+        <p>FoodKreator AG<br>Sagenhofweg 7, 6030 Ebikon<br><a href="tel:+41414420155">+41 41 442 01 55</a></p>
+      </div>
+      <div>
+        <h4>Entdecken</h4>
+        <ul>
+          <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+          <li><a href="kochideen.html">Kochideen</a></li>
+          <li><a href="fuer-dich.html">Für dich</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Service</h4>
+        <ul>
+          <li><a href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Shop</a></li>
+          <li><a href="ueber-uns.html#kontakt">Verkaufsstellen</a></li>
+          <li><a href="ueber-uns.html#kontakt">Fragen und Antworten</a></li>
+          <li><a href="ueber-uns.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Für Gastronomie und Handel</h4>
+        <p>Produktentwicklung, Eigenmarken und Gastro-Gebinde.</p>
+        <a class="link" href="https://www.foodkreator.ch/" target="_blank" rel="noopener">Zu foodkreator.ch
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="foot2__legal"><span>© FoodKreator AG</span><nav aria-label="Rechtliches"><a href="#">Impressum</a><a href="#">AGB</a><a href="#">Datenschutz</a></nav></div>
+  </div>
+</footer>
+
+<script src="assets/art.js"></script>
+<script src="assets/start.js"></script>
+<script src="assets/gerichte.js"></script>
+<script src="assets/ideen.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Redline · Unterseite «Kochideen»
+   Baut auf welten.css, start.css und page.css auf
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1 · Einstieg: kurz, damit «Idee finden» gleich sichtbar ist
+   -------------------------------------------------------------------------- */
+.ph--ideen { --hbg: #fbe6cf; padding-bottom: clamp(24px, 3vw, 40px); }
+.ih { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(20px, 4vw, 56px); align-items: center; }
+.ph--ideen h1 { font-size: clamp(2.2rem, 3.8vw, 3.4rem); max-width: 18ch; }
+.ih .lead { margin-bottom: 0; }
+.ih__art svg { display: block; width: 100%; height: auto; max-height: 300px; overflow: visible; }
+
+/* --------------------------------------------------------------------------
+   2 · Idee finden: Filter bleiben links stehen, Gerichte rechts
+   -------------------------------------------------------------------------- */
+#finden { padding-top: clamp(28px, 3vw, 44px); }
+.finden { display: grid; grid-template-columns: minmax(270px, 330px) minmax(0, 1fr); gap: clamp(20px, 3vw, 36px); align-items: start; }
+.ff { position: sticky; top: 138px; }
+.ff__reset { justify-self: start; padding: 4px 0; border: 0; background: none; color: var(--orange-deep); font: 700 14px var(--body); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.ff > .ff__reset { margin-top: -4px; }
+.ff__reset[hidden] { display: none !important; }
+.ideas__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; min-height: 34px; margin-bottom: 16px; }
+.ideas__head .ff__reset { display: none; }
+.ideas__title { margin: 0; font: 800 clamp(1.3rem, 2vw, 1.6rem)/1.1 var(--display); letter-spacing: -.02em; }
+.ideas__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ideas__more { display: flex; justify-content: center; margin-top: 26px; }
+.ideas__more[hidden] { display: none; }
+.ideas__empty { grid-column: 1 / -1; padding: 32px; border-radius: 28px; background: #fff; box-shadow: 0 14px 34px rgba(38, 31, 31, .07); }
+.ideas__empty b { display: block; margin-bottom: 6px; font: 800 1.2rem/1.2 var(--display); }
+.ideas__empty p { margin: 0; color: var(--muted); }
+
+/* Gerichtskarte: ganze Karte führt zur Kochidee, «Gewürz kaufen» separat */
+.idea { position: relative; display: flex; flex-direction: column; border-radius: 28px; overflow: hidden; background: #fff; box-shadow: 0 14px 34px rgba(38, 31, 31, .09); animation: pop .5s var(--ease) both; animation-delay: calc(var(--i, 0) * 50ms); transition: transform .25s var(--ease), box-shadow .25s; }
+.idea:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(38, 31, 31, .14); }
+.idea__art { aspect-ratio: 1; background: var(--bgc, var(--paper)); }
+.idea__art svg, .tcard__art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.jar-hover { transform-box: fill-box; transform-origin: 50% 100%; transition: transform .35s var(--ease); }
+.idea:hover .jar-hover, .tcard:hover .jar-hover { transform: translateY(-8px) rotate(-5deg); }
+.idea__body { display: flex; flex-direction: column; flex: 1; padding: 16px 18px 18px; }
+.idea__kicker { font-size: 12px; font-weight: 800; letter-spacing: .03em; color: var(--orange-deep); }
+.idea h3 { margin: 6px 0 4px; font: 800 1.22rem/1.12 var(--display); letter-spacing: -.02em; }
+.idea h3 a { text-decoration: none; }
+.idea h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+.idea h3 a:focus-visible { outline: none; }
+.idea:has(:focus-visible) { outline: 3px solid var(--orange); outline-offset: 3px; }
+.idea__with { margin: 0 0 8px; font-size: 14.5px; color: var(--ink-soft); }
+.idea__with strong { color: var(--ink); }
+.idea__text { margin: 0 0 14px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+.idea__links { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; font-size: 14.5px; font-weight: 700; }
+.idea__go { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+/* Hover bewegt nur den Pfeil, die Breite bleibt gleich (nichts springt) */
+.idea__go svg, .gw__go svg { transition: transform .2s var(--ease); }
+.idea:hover .idea__go svg, .gw:hover .gw__go svg { transform: translateX(4px); }
+.idea:hover .idea__go--down svg { transform: translateY(3px); }
+.idea__buy { position: relative; z-index: 2; padding: 6px 12px; border-radius: 999px; background: var(--paper); text-decoration: none; transition: background .2s; }
+.idea__buy:hover { background: var(--line); }
+@keyframes pop { from { opacity: 0; transform: translateY(16px); } }
+
+/* --------------------------------------------------------------------------
+   3 · Thema des Monats
+   -------------------------------------------------------------------------- */
+.theme__head { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px 60px; align-items: end; margin-bottom: clamp(32px, 4vw, 52px); }
+.theme__head .h2 { margin: 0; }
+.theme__offer .lead { margin-bottom: 16px; }
+.theme__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 0 0 20px; }
+.theme__price b { font: 800 2.2rem/1 var(--display); letter-spacing: -.03em; color: var(--orange); }
+.theme__price span { color: rgba(255, 250, 243, .75); font-weight: 600; }
+.theme__row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.tcard { display: flex; flex-direction: column; border-radius: 24px; overflow: hidden; background: var(--cream); color: var(--ink); text-decoration: none; transition: transform .25s var(--ease); }
+.tcard:hover { transform: translateY(-5px); }
+.tcard__art { aspect-ratio: 1; background: var(--bgc); }
+.tcard__body { display: flex; flex-direction: column; gap: 6px; flex: 1; padding: 14px 16px 18px; }
+.tcard__body b { font: 800 1.05rem/1.15 var(--display); letter-spacing: -.01em; }
+.tcard__body span { font-size: 13.5px; color: var(--ink-soft); }
+.tcard__body strong { color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   4 · Nach Gewürz: das Glas vor seiner Landschaft
+   -------------------------------------------------------------------------- */
+.gw-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.gw { display: flex; flex-direction: column; border-radius: 26px; overflow: hidden; background: #fff; box-shadow: 0 14px 34px rgba(38, 31, 31, .08); text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s; }
+.gw:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(38, 31, 31, .13); }
+.gw__scene { position: relative; aspect-ratio: 16 / 11; overflow: hidden; }
+.gw__bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gw__jar { position: absolute; left: 50%; bottom: 6%; width: 24%; transform: translateX(-50%); transition: transform .35s var(--ease); }
+.gw__jar svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 12px 12px rgba(38, 31, 31, .3)); }
+.gw:hover .gw__jar { transform: translateX(-50%) translateY(-8px) rotate(-5deg); }
+.gw__body { display: flex; flex-direction: column; flex: 1; padding: 16px 18px 18px; }
+.gw__body h3 { margin: 0 0 4px; font: 800 1.25rem/1.1 var(--display); letter-spacing: -.02em; }
+.gw__body p { margin: 0 0 12px; font-size: 14px; line-height: 1.4; color: var(--muted); }
+.gw__go { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 14.5px; font-weight: 700; color: var(--orange-deep); }
+.gw-all { margin: 24px 0 0; text-align: center; }
+
+/* --------------------------------------------------------------------------
+   5 · Newsletter
+   -------------------------------------------------------------------------- */
+.news--wide .h2 { max-width: 18ch; }
+
+/* --------------------------------------------------------------------------
+   Responsiv
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .ideas__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .theme__row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .theme__row::-webkit-scrollbar { display: none; }
+  .tcard { scroll-snap-align: start; }
+}
+@media (max-width: 900px) {
+  .ih, .theme__head { grid-template-columns: 1fr; }
+  .ih__art { max-width: 520px; }
+  .finden { grid-template-columns: 1fr; }
+  .ff { position: static; }
+  .ff > .ff__reset { display: none; }
+  .ideas__head .ff__reset { display: inline; }
+  /* Filter auf dem Handy als wischbare Zeilen */
+  .finden .opts { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--g) * -1); padding: 2px var(--g); }
+  .finden .opts::-webkit-scrollbar { display: none; }
+  .finden .opt { flex: none; }
+  .gw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .ideas__grid { grid-template-columns: 1fr; gap: 12px; }
+  /* Karte quer: Bild links, Text rechts */
+  .idea { flex-direction: row; border-radius: 22px; }
+  .idea__art { flex: 0 0 38%; aspect-ratio: auto; }
+  .idea__body { padding: 12px 14px 14px; }
+  .idea h3 { font-size: 1.05rem; }
+  .idea__text { display: none; }
+  .idea__links { font-size: 13.5px; }
+  .gw-grid { gap: 10px; }
+  .gw__body { padding: 12px 14px 14px; }
+  .gw__body h3 { font-size: 1.05rem; }
+  .theme__row { grid-auto-columns: 72%; }
+}

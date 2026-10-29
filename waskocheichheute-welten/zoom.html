@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Der Zoom · Was koche ich heute?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/welten.css">
+<style>
+  .z-intro { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 110px 0 60px; overflow: hidden; }
+  .z-intro__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 24px; align-items: center; }
+  .z-intro__art { position: relative; aspect-ratio: 1; }
+  .z-intro__art svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+  .z-stage { position: relative; height: 100vh; overflow: hidden; background: #261f1f; }
+  .z-layer { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; }
+  .z-layer > .z-scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .z-plate { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); overflow: visible; }
+  .z-next {
+    position: absolute; left: 50%; top: 50%; z-index: 5; transform: translate(-50%, 0);
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    padding: 8px 16px 8px 8px; border-radius: 999px; background: rgba(255, 250, 243, .94);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .25); font: 800 15px/1 var(--display);
+  }
+  .z-next i { width: 22px; height: 22px; border-radius: 50%; background: var(--dot); box-shadow: inset 0 0 0 1px rgba(38, 31, 31, .25); }
+  .z-next svg { animation: bob 1.6s ease-in-out infinite; }
+  .z-panel { position: absolute; left: var(--g); top: 50%; transform: translateY(-50%); width: min(430px, 32vw); z-index: 20; }
+  .z-panel .wp-title { font-size: clamp(2.4rem, 4.2vw, 4rem); }
+
+  @media (max-width: 860px) {
+    .z-intro__grid { grid-template-columns: 1fr; }
+    .z-panel { top: auto; bottom: 66px; left: 12px; right: 12px; width: auto; transform: none; }
+    .z-panel .wp-card { padding: 14px 18px; border-radius: 22px; }
+    .z-panel .wp-title { font-size: 2.2rem; margin-bottom: 8px; }
+    .z-panel .wp-text { display: none; }
+    .z-panel .wp-kicker { margin-bottom: 6px; }
+    .z-next { font-size: 13px; }
+  }
+</style>
+</head>
+<body id="top">
+<header data-header></header>
+
+<main>
+  <section class="z-intro" aria-labelledby="h-intro">
+    <div class="wrap z-intro__grid">
+      <div>
+        <p class="eyebrow">Regionale Zutaten · Globaler Geschmack</p>
+        <h1 class="display" id="h-intro">Tauch ein in deinen <em>Teller.</em></h1>
+        <p class="lead">Was koche ich heute? In jedem Teller steckt eine ganze Welt. Scroll hinein, und die Sauce führt dich von der Schweiz bis ans Grillfeuer der Pampa.</p>
+        <div class="btn-row">
+          <a class="btn" href="#welten">Eintauchen
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <a class="btn btn--ghost" href="#probierset">Probierset · CHF 24.90</a>
+        </div>
+      </div>
+      <div class="z-intro__art" aria-hidden="true" id="introArt"></div>
+    </div>
+  </section>
+
+  <section class="z-stage" id="welten" aria-label="Fünf Welten, eine in der anderen">
+    <div id="layers"></div>
+    <div class="z-panel"><div class="wp-card"><div class="wp-stack" id="panels" aria-live="polite"></div></div></div>
+    <nav class="rail" id="rail" aria-label="Welten"></nav>
+  </section>
+  <div id="static"></div>
+
+  <div data-outro></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/welten.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Art, Wl = window.Welten, W = Wl.worlds, N = W.length;
+
+  /* Teller als Portal: Rand mit Loch in der Mitte (Radius 100) */
+  function portal(w, withHole) {
+    var hole = withHole
+      ? '<circle r="101" fill="' + w.sauce + '"/>' +
+        '<path fill-rule="evenodd" d="M-142 0a142 142 0 1 0 284 0a142 142 0 1 0 -284 0ZM-100 0a100 100 0 1 0 200 0a100 100 0 1 0 -200 0Z" fill="#fffdf8"/>' +
+        '<circle r="100" fill="none" stroke="' + w.sauce + '" stroke-width="7"/>' +
+        '<circle r="104" fill="none" stroke="#e4dacb" stroke-width="3"/>'
+      : '<circle r="142" fill="#fffdf8"/><g transform="scale(.5)">' + A.plate({ sauce: w.sauce, world: w.id, grill: w.id === 'feuer', part: 'top' }) + A.plate({ sauce: w.sauce, grill: w.id === 'feuer', part: 'base' }) + '</g>';
+    return '<ellipse cx="10" cy="18" rx="160" ry="150" fill="#000" opacity=".22"/>' +
+      '<circle r="142" fill="none" stroke="#ebe3d6" stroke-width="2"/>' + hole +
+      '<path d="M-118 -46A126 126 0 0 1 -46 -118" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>' +
+      '<g transform="translate(-196 -96)"><rect x="-6" y="40" width="12" height="150" rx="6" fill="#c9ccd0"/><path d="M-16 -10V40Q0 54 16 40V-10M-5 -10V30M5 -10V30" fill="none" stroke="#c9ccd0" stroke-width="6" stroke-linecap="round"/></g>' +
+      '<g transform="translate(196 -100)"><path d="M-8 -6Q14 30 6 110H-6Z" fill="#dfe2e6"/><rect x="-7" y="104" width="14" height="96" rx="6" fill="#8a5a33"/></g>' +
+      '<g transform="translate(178 30) scale(.62) rotate(8)"><g transform="translate(-60 -150)">' + A.jar({ name: w.spice, spice: w.spiceColor, dish: w.sauce }) + '</g></g>';
+  }
+
+  document.getElementById('introArt').innerHTML = '<svg viewBox="-260 -260 520 520">' +
+    '<circle r="250" fill="#f7e3cd"/><circle r="200" fill="#fdeedd"/><circle r="150" fill="#fbe3c6"/><circle r="100" fill="#f9d8b0"/><circle r="50" fill="#f6c88f"/>' +
+    '<g transform="scale(1.05)">' + portal(W[0], false) + '</g></svg>';
+
+  if (!Wl.motion) {
+    document.getElementById('welten').remove();
+    Wl.staticWorlds(document.getElementById('static'));
+    return;
+  }
+  var gsap = window.gsap;
+  var stage = document.getElementById('welten');
+
+  /* ---------- Ebenen ---------- */
+  var layersEl = document.getElementById('layers');
+  layersEl.innerHTML = W.map(function (w, i) {
+    var last = i === N - 1, nx = W[i + 1];
+    return '<div class="z-layer" style="z-index:' + (i + 1) + '">' +
+      '<svg class="z-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">' + A.scene(w.id) + '</svg>' +
+      '<svg class="z-plate" viewBox="-260 -260 520 520" aria-hidden="true">' + portal(w, !last) + '</svg>' +
+      (last ? '' : '<span class="z-next" style="--dot:' + nx.liquidColor + '"><i></i>Tauch ein: ' + nx.liquid + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>') +
+    '</div>';
+  }).join('');
+  var layers = layersEl.querySelectorAll('.z-layer');
+  var plates = layersEl.querySelectorAll('.z-plate');
+  var nexts = layersEl.querySelectorAll('.z-next');
+
+  var panelsEl = document.getElementById('panels');
+  panelsEl.innerHTML = W.map(Wl.panel).join('');
+  var pn = panelsEl.querySelectorAll('.wp');
+  var card = stage.querySelector('.z-panel .wp-card');
+  gsap.set(pn, { autoAlpha: 0, y: 30 });
+  gsap.set(pn[0], { autoAlpha: 1, y: 0 });
+
+  /* ---------- Geometrie ---------- */
+  /* r = Radius des Fensters im Teller, a = grösster Kreis, der in die Fläche passt, R = halbe Diagonale */
+  var r, a, R;
+  function measure() {
+    var vw = stage.clientWidth || window.innerWidth, vh = stage.clientHeight || window.innerHeight;
+    var mobile = vw < 860;
+    r = Math.min(vw, vh) * (mobile ? 0.21 : 0.17);
+    a = Math.min(vw, vh) / 2;
+    R = Math.sqrt(vw * vw + vh * vh) / 2 + 4;
+    var size = r * 5.2;
+    plates.forEach(function (p) { p.style.width = size + 'px'; p.style.height = size + 'px'; });
+    nexts.forEach(function (n) { n.style.top = (vh / 2 + r * 1.55) + 'px'; });
+    render();
+  }
+  function smooth(x) { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); }
+
+  /* p = 0 … N-1: ganze Zahl = Welt, Bruchteil = Zoom dazwischen */
+  var state = { p: 0 };
+  function render() {
+    var i = Math.min(N - 2, Math.floor(state.p)), t = state.p - i;
+    if (state.p >= N - 1) { i = N - 2; t = 1; }
+    var z = Math.pow(a / r, t), open = smooth((t - 0.68) / 0.32);
+    layers.forEach(function (l, j) {
+      if (j === i) {
+        l.style.visibility = 'visible'; l.style.transform = 'scale(' + z + ')'; l.style.clipPath = 'none';
+      } else if (j === i + 1) {
+        l.style.visibility = 'visible'; l.style.transform = 'scale(' + (z * r / a) + ')';
+        l.style.clipPath = 'circle(' + (a + (R - a) * open).toFixed(1) + 'px at 50% 50%)';
+      } else {
+        l.style.visibility = 'hidden';
+      }
+    });
+    nexts.forEach(function (n, j) { n.style.opacity = j === i ? String(Math.max(0, 1 - t * 4)) : (j === i + 1 && t >= 1 ? '1' : '0'); });
+  }
+  measure();
+  window.addEventListener('resize', measure);
+
+  var setActive = Wl.rail(document.getElementById('rail'), W.map(function (w) { return { label: w.name, dot: w.liquidColor }; }), function (i) {
+    window.scrollTo({ top: tl.scrollTrigger.labelToScroll('w' + i), behavior: 'smooth' });
+  });
+
+  /* ---------- Zeitachse: kurz verweilen, dann eintauchen ---------- */
+  var HOLD = 0.35, labels = [];
+  var snap = Wl.snapper(function () { return labels.map(function (t) { return t / tl.duration(); }); });
+  var tl = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: {
+      trigger: stage, start: 'top top',
+      end: function () { return '+=' + Math.round(window.innerHeight * N * 1.2); },
+      pin: true, scrub: 0.8, invalidateOnRefresh: true, onRefresh: measure,
+      snap: { snapTo: snap.snapTo, inertia: false, duration: { min: 0.3, max: 1 }, delay: 0.12, ease: 'power2.inOut' },
+      onUpdate: function (self) { snap.track(self); setActive(Math.round(state.p)); }
+    }
+  });
+  W.forEach(function (w, i) {
+    var at = i * (1 + HOLD);
+    labels.push(at + HOLD / 2);
+    tl.addLabel('w' + i, at + HOLD / 2);
+    if (i === N - 1) { tl.to({}, { duration: HOLD }, at); return; }
+    tl.to(state, { p: i + 1, duration: 1, ease: 'power1.inOut', onUpdate: render }, at + HOLD)
+      .to(card, { autoAlpha: 0, x: -50, duration: 0.16, ease: 'power1.in' }, at + HOLD)
+      .set(pn[i], { autoAlpha: 0 }, at + HOLD + 0.5)
+      .set(pn[i + 1], { autoAlpha: 1, y: 0 }, at + HOLD + 0.5)
+      .to(card, { autoAlpha: 1, x: 0, duration: 0.2, ease: 'power2.out' }, at + HOLD + 0.8);
+  });
+  setActive(0);
+})();
+</script>
+</body>
+</html>

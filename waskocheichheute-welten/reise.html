@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Die Reise · Was koche ich heute?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/welten.css">
+<style>
+  .r-intro { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 110px 0 60px; overflow: hidden; background: linear-gradient(#cfe8f5, #fdf1e6 70%); }
+  .r-intro__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 24px; align-items: center; }
+  .r-intro__art { position: relative; aspect-ratio: 1.15; }
+  .r-intro__art .r-globe { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .r-intro__art .ship { position: absolute; left: 22%; top: 24%; width: 58%; height: auto; }
+
+  .r-stage { position: relative; height: 100vh; overflow: hidden; background: #142235; }
+  .r-track { position: absolute; top: 0; left: 0; height: 100%; display: flex; will-change: transform; }
+  .r-panel { position: relative; flex: none; width: 100vw; height: 100%; }
+  .r-panel svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .r-card { position: absolute; left: clamp(16px, 6vw, 96px); top: clamp(86px, 12vh, 120px); width: min(430px, 40vw); z-index: 2; }
+  .r-card .wp-title { font-size: clamp(2.2rem, 3.8vw, 3.5rem); }
+  .r-haze { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 35%, rgba(255, 250, 243, .22) 78%); }
+  .r-boat { position: absolute; left: 8vw; width: clamp(150px, 19vw, 300px); z-index: 4; pointer-events: none; transform-origin: 50% 80%; }
+  .r-boat svg { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; }
+  .r-boat .raft { opacity: 0; }
+  .r-route { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); z-index: 6; display: flex; align-items: center; gap: 0; padding: 8px 14px; border-radius: 999px; background: rgba(255, 250, 243, .9); backdrop-filter: blur(10px); box-shadow: 0 8px 24px rgba(38, 31, 31, .16); }
+  .r-route button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; padding: 2px 4px; border: 0; background: none; cursor: pointer; font: 700 11px/1 var(--body); color: var(--muted); }
+  .r-route button i { width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 2px var(--line); transition: background .3s, box-shadow .3s, transform .3s; }
+  .r-route button[aria-current="true"] { color: var(--ink); }
+  .r-route button[aria-current="true"] i { background: var(--orange); box-shadow: 0 0 0 4px rgba(246, 142, 16, .25); transform: scale(1.2); }
+  .r-route button.is-past i { background: var(--ink); box-shadow: none; }
+  .r-route button + button::before { content: ""; position: absolute; right: calc(50% + 10px); top: 7px; width: calc(100% - 20px); height: 2px; background: var(--line); }
+  .r-route button.is-past + button::before, .r-route button.is-past + button[aria-current="true"]::before { background: var(--ink); }
+
+  @media (max-width: 860px) {
+    .r-intro__grid { grid-template-columns: 1fr; }
+    .r-card { left: 12px; right: 12px; width: auto; top: 128px; }
+    .r-card .wp-card { padding: 16px 18px; border-radius: 22px; }
+    .r-card .wp-title { font-size: 2.3rem; }
+    .r-card .wp-text { font-size: 14px; }
+    .r-route { top: 70px; padding: 6px 8px; }
+    .r-route button { min-width: 36px; }
+    .r-route button span { display: none; }
+    .r-boat { left: 4vw; width: 46vw; }
+  }
+</style>
+</head>
+<body id="top">
+<header data-header></header>
+
+<main>
+  <section class="r-intro" aria-labelledby="h-intro">
+    <div class="wrap r-intro__grid">
+      <div>
+        <p class="eyebrow">Die Geschichte hinter Redline</p>
+        <h1 class="display" id="h-intro">Was koche ich <em>heute?</em></h1>
+        <p class="lead">Ein Schweizer Koch reist um die Welt, erleidet Schiffbruch und entdeckt das Geheimnis aller Küchen. Steig ein und reise mit Mr. Spice.</p>
+        <div class="btn-row">
+          <a class="btn" href="#reise">Leinen los
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <a class="btn btn--ghost" href="#probierset">Probierset · CHF 24.90</a>
+        </div>
+      </div>
+      <div class="r-intro__art" aria-hidden="true" id="introArt"></div>
+    </div>
+  </section>
+
+  <section class="r-stage" id="reise" aria-label="Die Reise von Mr. Spice in sieben Stationen">
+    <div class="r-track" id="track"></div>
+    <div class="r-boat bob" id="boat"></div>
+    <nav class="r-route" id="route" aria-label="Stationen der Reise"></nav>
+  </section>
+  <div id="static"></div>
+
+  <div data-outro></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/welten.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Art, Wl = window.Welten, W = Wl.worlds;
+  function wd(id) { return W.filter(function (w) { return w.id === id; })[0]; }
+
+  /* ---------- Einstieg: Globus mit Route und Schiff ---------- */
+  (function () {
+    var r = A.rnd(9), land = '';
+    [[250, 220, 70], [330, 300, 60], [430, 210, 80], [520, 330, 55], [600, 250, 46]].forEach(function (b) {
+      var pts = [];
+      for (var i = 0; i < 9; i++) { var a = i / 9 * Math.PI * 2, rr = b[2] * (0.7 + r() * 0.5); pts.push([b[0] + Math.cos(a) * rr, b[1] + Math.sin(a) * rr * 0.8]); }
+      var d = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join('L') + 'Z';
+      land += '<path d="' + d + '" fill="#9cc66f" stroke="#7fb35c" stroke-width="6" stroke-linejoin="round"/>';
+    });
+    document.getElementById('introArt').innerHTML =
+      '<svg class="r-globe" viewBox="0 0 700 600"><defs><clipPath id="gc"><circle cx="400" cy="290" r="250"/></clipPath><radialGradient id="gg" cx=".35" cy=".3"><stop offset="0" stop-color="#8fd0ea"/><stop offset="1" stop-color="#3d8fbf"/></radialGradient></defs>' +
+      '<circle cx="410" cy="306" r="256" fill="#261f1f" opacity=".12"/><circle cx="400" cy="290" r="250" fill="url(#gg)"/>' +
+      '<g clip-path="url(#gc)">' + land + '</g>' +
+      '<path d="M210 230 C300 140, 470 120, 560 220 S 560 420, 420 460 S 230 420, 250 330" fill="none" stroke="#f68e10" stroke-width="5" stroke-dasharray="4 14" stroke-linecap="round"/>' +
+      '<circle cx="210" cy="230" r="11" fill="#eb5737" stroke="#fff" stroke-width="4"/><circle cx="560" cy="220" r="8" fill="#fff"/><circle cx="420" cy="460" r="8" fill="#fff"/><circle cx="250" cy="330" r="11" fill="#261f1f" stroke="#fff" stroke-width="4"/>' +
+      '</svg>' + A.ship();
+  })();
+
+  if (!Wl.motion) {
+    document.getElementById('reise').remove();
+    Wl.staticWorlds(document.getElementById('static'));
+    return;
+  }
+
+  var gsap = window.gsap;
+
+  /* ---------- Die sieben Stationen ---------- */
+  function formula(liquid, lc, spice, sc, dish) {
+    return '<ol class="formula" aria-label="Rezeptformel"><li><span class="chip" style="--dot:#e0a95e"><i></i>Poulet</span></li><li><span class="op" aria-hidden="true">+</span></li>' +
+      '<li><span class="chip" style="--dot:' + lc + '"><i></i>' + liquid + '</span></li><li><span class="op" aria-hidden="true">+</span></li>' +
+      '<li><span class="chip chip--spice" style="--dot:' + sc + '"><i></i>Redline ' + spice + '</span></li></ol><p class="wp-dish"><span>=</span>' + dish + '</p>';
+  }
+  function fromWorld(id) { var w = wd(id); return formula(w.liquid, w.liquidColor, w.spice, w.spiceColor, w.dish); }
+
+  var STOPS = [
+    { key: 'Schweiz', scene: 'norden', sky: '#8ec3e3', sea: '#5f9fc0', kicker: 'Station 1 · Schweiz', title: 'Alles beginnt mit <em>Rahm.</em>', text: 'Schon als Kind steht er in den Küchen der Schweiz. Er lernt: Hier kocht man mit Milch und Rahm.', extra: fromWorld('norden') },
+    { key: 'Süden', scene: 'sueden', sky: '#f4ae66', sea: '#4d9ab8', kicker: 'Station 2 · Argentinien und Italien', title: 'Dann kommen die <em>Tomaten.</em>', text: 'In Argentinien und Italien kocht er mit Tomaten, die in der Sonne reifen. Bis nach Äthiopien reicht diese Küche.', extra: fromWorld('sueden') },
+    { key: 'Osten', scene: 'fernost', sky: '#3a2a66', sea: '#2d3f73', kicker: 'Station 3 · Hongkong und China', title: 'Salzig, tief: <em>Soja.</em>', text: 'In Hongkong und China lernt er den Umgang mit Soja. Seine Küchenpartner nennen ihn bald «Mr. Spice».', extra: fromWorld('fernost') },
+    { key: 'Tropen', scene: 'tropen', sky: '#8fd3c1', sea: '#38a39a', kicker: 'Station 4 · Die Tropen', title: 'Cremig und frisch: <em>Kokos.</em>', text: 'Unter Palmen entdeckt er die Kokosnuss. Ihre Milch macht aus jedem Gericht etwas Exotisches.', extra: fromWorld('tropen') },
+    { key: 'Sturm', scene: 'sturm', sky: '#262b3f', sea: '#25364f', kicker: 'Station 5 · Auf hoher See', title: '<em>Schiffbruch.</em>', text: 'Auf der Heimreise gerät sein Schiff in einen Sturm. Eine ganze Nacht klammert er sich an ein Floss aus Trümmern.', extra: '' },
+    { key: 'Insel', scene: 'insel', sky: '#ffcf8f', sea: '#3fa8b8', kicker: 'Station 6 · Eine ferne Insel', title: 'Grillen oder <em>Kochen?</em>', text: 'Mit Tamatu eröffnet er einen Essstand am Hafen. Bald kommen Gäste von der ganzen Insel, nur wegen seiner Küche.', extra: fromWorld('feuer') },
+    { key: 'Entdeckung', scene: 'entdeckung', sky: '#ffb86b', sea: '#4cb0c4', kicker: 'Die Entdeckung', title: 'Nur <em>fünf</em> Flüssigkeiten.', text: 'Es gibt nur fünf Kochflüssigkeiten: Wasser, Rahm, Tomate, Kokos und Soja. Daraus entsteht das Redline-System und deine Antwort auf «Was koche ich heute?».', extra: '<a class="btn btn--orange btn--small" href="#probierset">Probierset ansehen</a>' }
+  ];
+  var N = STOPS.length;
+  var STORM = 4;
+
+  function mix(a, b) {
+    var pa = [1, 3, 5].map(function (k) { return parseInt(a.substr(k, 2), 16); });
+    var pb = [1, 3, 5].map(function (k) { return parseInt(b.substr(k, 2), 16); });
+    return '#' + pa.map(function (v, k) { return ('0' + Math.round((v + pb[k]) / 2).toString(16)).slice(-2); }).join('');
+  }
+
+  var track = document.getElementById('track');
+  var skyStops = STOPS.map(function (s, i) { return s.sky + ' ' + ((i + 0.5) / N * 100).toFixed(2) + '%'; });
+  track.style.background = 'linear-gradient(90deg, ' + STOPS[0].sky + ' 0%, ' + skyStops.join(', ') + ', ' + STOPS[N - 1].sky + ' 100%)';
+  track.innerHTML = STOPS.map(function (s, i) {
+    var left = i ? mix(STOPS[i - 1].sea, s.sea) : s.sea, right = i < N - 1 ? mix(s.sea, STOPS[i + 1].sea) : s.sea;
+    return '<div class="r-panel" data-i="' + i + '">' +
+      '<div class="r-haze"></div>' +
+      '<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">' +
+        A.scene(s.scene, { sky: false, voyage: true }) + A.seaPanel([left, s.sea, right], i * 1600, (STORM + 0.5) * 1600, 1500) +
+      '</svg>' +
+      '<div class="r-card"><div class="wp-card"><article class="wp">' +
+        '<p class="wp-kicker"><b>' + String(i + 1).padStart(2, '0') + '</b>' + s.kicker + '</p>' +
+        '<h2 class="wp-title">' + s.title + '</h2><p class="wp-text">' + s.text + '</p>' + s.extra +
+      '</article></div></div>' +
+    '</div>';
+  }).join('');
+
+  /* ---------- Boot ---------- */
+  var boat = document.getElementById('boat');
+  boat.innerHTML = A.ship() + A.raft();
+  var ship = boat.querySelector('.ship'), raft = boat.querySelector('.raft');
+  function placeBoat() {
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var s = Math.max(vw / 1600, vh / 900);
+    var seaY = vh - (900 - 742) * s;
+    var bw = boat.getBoundingClientRect().width || 240;
+    boat.style.top = (seaY - bw * (214 / 320)) + 'px';
+    boat.style.height = (bw * 280 / 320) + 'px';
+  }
+  placeBoat();
+  window.addEventListener('resize', placeBoat);
+
+  /* ---------- Route oben ---------- */
+  var route = document.getElementById('route');
+  route.innerHTML = STOPS.map(function (s) { return '<button type="button" aria-label="' + s.key + '"><i></i><span>' + s.key + '</span></button>'; }).join('');
+  var rb = route.querySelectorAll('button');
+  function setActive(idx) { rb.forEach(function (b, k) { b.setAttribute('aria-current', String(k === idx)); b.classList.toggle('is-past', k < idx); }); }
+  rb.forEach(function (b, k) { b.addEventListener('click', function () { var st = tl.scrollTrigger; window.scrollTo({ top: st.start + (st.end - st.start) * k / (N - 1), behavior: 'smooth' }); }); });
+
+  /* ---------- Fahrt ---------- */
+  var points = []; for (var k = 0; k < N; k++) points.push(k / (N - 1));
+  var snap = Wl.snapper(function () { return points; });
+  var tl = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: {
+      trigger: '#reise', start: 'top top',
+      end: function () { return '+=' + Math.round(window.innerWidth * (N - 1) * 1.1); },
+      pin: true, scrub: 1, invalidateOnRefresh: true,
+      snap: { snapTo: snap.snapTo, inertia: false, duration: { min: 0.35, max: 1 }, delay: 0.12, ease: 'power2.inOut' },
+      onUpdate: function (self) { snap.track(self); setActive(Math.round(self.progress * (N - 1))); }
+    }
+  });
+  tl.to(track, { x: function () { return -window.innerWidth * (N - 1); }, duration: N - 1 }, 0);
+
+  /* Sturm: das Schiff schaukelt, zerbricht und wird zum Floss */
+  var S0 = STORM - 1;
+  tl.to(boat, { rotation: -14, duration: 0.18, ease: 'sine.inOut' }, S0)
+    .to(boat, { rotation: 16, y: -24, duration: 0.18, ease: 'sine.inOut' }, S0 + 0.18)
+    .to(boat, { rotation: -22, y: 10, duration: 0.16, ease: 'sine.inOut' }, S0 + 0.36)
+    .to(boat, { rotation: 24, y: -30, duration: 0.16, ease: 'sine.inOut' }, S0 + 0.52)
+    .to(ship, { opacity: 0, y: 60, rotation: 40, transformOrigin: '50% 80%', duration: 0.14 }, S0 + 0.62)
+    .to(raft, { opacity: 1, duration: 0.12 }, S0 + 0.7)
+    .to(boat, { rotation: -8, y: 0, duration: 0.2, ease: 'sine.inOut' }, S0 + 0.68)
+    .to(boat, { rotation: 0, duration: 0.25, ease: 'sine.out' }, S0 + 0.88)
+    .to(boat, { x: function () { return window.innerWidth * 0.25; }, opacity: 0, duration: 0.45, ease: 'power1.in' }, STORM + 0.45);
+
+  /* Texte fahren mit leichter Verzögerung herein */
+  track.querySelectorAll('.r-card').forEach(function (c, i) {
+    if (!i) return;
+    tl.fromTo(c, { x: 160, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: 'power2.out' }, i - 0.5);
+  });
+
+  setActive(0);
+})();
+</script>
+</body>
+</html>

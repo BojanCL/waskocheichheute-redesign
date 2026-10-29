@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Wireframe · Für dich · waskocheichheute.ch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/wireframe.css">
+</head>
+<body>
+
+<div class="wf-bar" role="region" aria-label="Wireframe-Steuerung">
+  <div class="wf-bar__title">
+    <span class="wf-badge">Wireframe</span>
+    <select class="wf-select" id="page-select" aria-label="Seite wählen">
+      <option value="index.html">Startseite</option>
+      <option value="so-funktionierts.html">So funktioniert's</option>
+      <option value="kochideen.html">Kochideen</option>
+      <option value="kochidee-mekong.html">Kochidee (Beispiel Mekong)</option>
+      <option value="fuer-dich.html" selected>Für dich</option>
+      <option value="ueber-uns.html">Über uns</option>
+    </select>
+    <span class="wf-bar__hint">Entwurf zur Diskussion · Reihenfolge und Inhalte, nicht Design</span>
+  </div>
+  <div class="wf-bar__controls">
+    <div class="wf-seg" role="group" aria-label="Ansicht">
+      <button type="button" class="wf-btn" data-view="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" class="wf-btn" data-view="phone" aria-pressed="false">Handy</button>
+    </div>
+    <button type="button" class="wf-btn wf-toggle" id="notes-toggle" aria-pressed="true">Notizen</button>
+  </div>
+</div>
+
+<div class="stage"><div class="viewport" id="viewport"><div class="site">
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Was koche ich heute? Zur Startseite">
+        <span class="brand__logo" aria-hidden="true">Logo</span>
+        <span class="brand__text"><span class="brand__kicker">REDLINE</span><span class="brand__name">Was koche ich heute?</span></span>
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="so-funktionierts.html">So funktioniert's</a>
+        <a href="kochideen.html">Kochideen</a>
+        <a href="fuer-dich.html" aria-current="page">Für dich</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a class="btn btn--primary btn--small" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+      </nav>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Hauptnavigation mobil">
+      <a href="so-funktionierts.html">So funktioniert's</a>
+      <a href="kochideen.html">Kochideen</a>
+      <a href="fuer-dich.html" aria-current="page">Für dich</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a class="btn btn--primary" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Zum Shop</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1 UEBERBLICK -->
+    <section class="page-hero" id="start" aria-labelledby="h-start">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 1 / 6</span>
+          <span class="note__title">Welcher Bereich passt zu mir?</span>
+          <span class="note__src">Bündelt die heutigen Seiten «VeggieEvolution», «Abnehmen mit Redline», «Kinder», «Schulen» und die BBQ-Themen</span>
+        </aside>
+        <ol class="crumbs"><li><a href="index.html">Startseite</a></li><li aria-current="page">Für dich</li></ol>
+        <p class="eyebrow">Für jede Küche</p>
+        <h1 class="h1 h1--page" id="h-start">Für dich</h1>
+        <p class="lead lead--hero">Ob vegetarisch, leicht, am Grill oder mit Kindern: Das Redline-System passt sich deiner Küche an.</p>
+        <ul class="jump" aria-label="Auf dieser Seite">
+          <li><a href="#veggie">Vegetarisch</a></li>
+          <li><a href="#leicht">Leicht kochen</a></li>
+          <li><a href="#grill">Grill und BBQ</a></li>
+          <li><a href="#familie">Familie</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2 VEGGIE -->
+    <section class="section section--alt" id="veggie" aria-labelledby="h-veggie">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 2 / 6</span>
+          <span class="note__title">Kann ich das auch vegetarisch kochen?</span>
+          <span class="note__src">Quelle: «VeggieEvolution» · Option: Geschichte aus dem Mara Bush Camp in Kenia (heute «Weltweit») als Beispiel aus der Praxis</span>
+        </aside>
+        <div class="split split--top">
+          <div>
+            <p class="eyebrow">VeggieEvolution</p>
+            <h2 class="h2" id="h-veggie">Behandle Gemüse wie Fleisch</h2>
+            <p class="lead mb-24">Gemüse soll nicht wie Fleisch schmecken. Aber du bereitest es zu wie Fleisch. So kochst du für Vegetarier und Fleischesser gleichzeitig, ohne doppelten Aufwand.</p>
+            <a class="link" href="kochideen.html">Vegetarische Kochideen →</a>
+          </div>
+          <ul class="list-reset" style="display: grid; gap: 12px;">
+            <li class="card pair"><strong>Randen</strong><span class="pair__arrow" aria-hidden="true">→</span><span>wie Rind</span></li>
+            <li class="card pair"><strong>Kohlrabi</strong><span class="pair__arrow" aria-hidden="true">→</span><span>wie Kalb</span></li>
+            <li class="card pair"><strong>Sellerie</strong><span class="pair__arrow" aria-hidden="true">→</span><span>wie Schwein</span></li>
+            <li class="card pair"><strong>Rettich</strong><span class="pair__arrow" aria-hidden="true">→</span><span>wie Poulet</span></li>
+          </ul>
+        </div>
+        <div class="g3 mt-40">
+          <article class="card card--link"><div class="ph card__media" aria-hidden="true"><span>Foto: Sellerie-Steak</span></div><div class="card__body"><span class="kicker">statt Schweinesteak</span><h3 class="h3">Sellerie-Steak</h3><p class="body">Grilliert, mit Champignons.</p></div></article>
+          <article class="card card--link"><div class="ph card__media" aria-hidden="true"><span>Foto: Kohlrabi-Geschnetzeltes</span></div><div class="card__body"><span class="kicker">statt Geschnetzeltem</span><h3 class="h3">Kohlrabi-Geschnetzeltes</h3><p class="body">Mit Rahm, nach Zürcher Art.</p></div></article>
+          <article class="card card--link"><div class="ph card__media" aria-hidden="true"><span>Foto: Rettich-Satay</span></div><div class="card__body"><span class="kicker">statt Poulet-Satay</span><h3 class="h3">Rettich-Satay</h3><p class="body">Am Spiess, mit Redline Mekong.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 LEICHT -->
+    <section class="section" id="leicht" aria-labelledby="h-light">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 3 / 6</span>
+          <span class="note__title">Wie koche ich leichter?</span>
+          <span class="note__src">Quelle: «Abnehmen mit Redline» · neu formuliert: keine Kochflüssigkeit ist «ungeeignet», Kokos heisst jetzt «reichhaltiger», sonst widerspricht die Seite dem System</span>
+        </aside>
+        <p class="eyebrow">Leicht kochen</p>
+        <h2 class="h2" id="h-light">Die Kochflüssigkeit macht den Unterschied</h2>
+        <p class="lead">Bei gleicher Zutat entscheidet die Flüssigkeit, wie leicht oder reichhaltig ein Gericht wird.</p>
+
+        <div class="tabs" role="tablist" aria-label="Vergleich wählen">
+          <button type="button" class="tab" role="tab" id="tab-100" aria-controls="panel-100" aria-selected="true">Pro 100 ml Flüssigkeit</button>
+          <button type="button" class="tab" role="tab" id="tab-dish" aria-controls="panel-dish" aria-selected="false" tabindex="-1">Beispiel Pouletragout</button>
+        </div>
+
+        <div role="tabpanel" id="panel-100" aria-labelledby="tab-100">
+          <div class="card">
+            <div class="bars">
+              <div class="bar"><span class="bar__label">Wasser</span><span class="bar__track"><span class="bar__fill" style="width: 1%; display: block;"></span></span><span class="bar__val">0 kcal</span></div>
+              <div class="bar"><span class="bar__label">Soja / Wasser 20:80</span><span class="bar__track"><span class="bar__fill" style="width: 6.5%; display: block;"></span></span><span class="bar__val">13 kcal</span></div>
+              <div class="bar"><span class="bar__label">Tomate</span><span class="bar__track"><span class="bar__fill" style="width: 20%; display: block;"></span></span><span class="bar__val">40 kcal</span></div>
+              <div class="bar"><span class="bar__label">Milch / Rahm 50:50</span><span class="bar__track"><span class="bar__fill" style="width: 45%; display: block;"></span></span><span class="bar__val">90 kcal</span></div>
+              <div class="bar"><span class="bar__label">Kokosmilch</span><span class="bar__track"><span class="bar__fill" style="width: 100%; display: block;"></span></span><span class="bar__val">200 kcal</span></div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" id="panel-dish" aria-labelledby="tab-dish" hidden>
+          <div class="card">
+            <p class="small mt-0 mb-16">150 g Pouletbrust, 80 g Zucchetti, 100 g Kochflüssigkeit</p>
+            <div class="bars">
+              <div class="bar"><span class="bar__label">mit Wasser</span><span class="bar__track"><span class="bar__fill" style="width: 50%; display: block;"></span></span><span class="bar__val">203 kcal</span></div>
+              <div class="bar"><span class="bar__label">mit Soja / Wasser</span><span class="bar__track"><span class="bar__fill" style="width: 54%; display: block;"></span></span><span class="bar__val">216 kcal</span></div>
+              <div class="bar"><span class="bar__label">mit Tomate</span><span class="bar__track"><span class="bar__fill" style="width: 60%; display: block;"></span></span><span class="bar__val">243 kcal</span></div>
+              <div class="bar"><span class="bar__label">mit Milch / Rahm</span><span class="bar__track"><span class="bar__fill" style="width: 73%; display: block;"></span></span><span class="bar__val">293 kcal</span></div>
+              <div class="bar"><span class="bar__label">mit Kokosmilch</span><span class="bar__track"><span class="bar__fill" style="width: 100%; display: block;"></span></span><span class="bar__val">403 kcal</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g3 mt-24">
+          <div class="card card--flat"><h3 class="h3">Mehr Gemüse, etwas weniger Fleisch</h3><p class="body">120 g Poulet und 110 g Gemüse statt 150 g und 80 g: rund 50 kcal weniger pro Teller.</p></div>
+          <div class="card card--flat"><h3 class="h3">Reichhaltiges strecken</h3><p class="body">Kokosmilch oder Rahm mit Wasser mischen: Der Geschmack bleibt, die Kalorien sinken.</p></div>
+          <div class="card card--flat"><h3 class="h3">Die richtige Beilage</h3><p class="body">Gedämpfte Kartoffeln sättigen am besten pro Kalorie, Reis und Pasta machen lange satt.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 GRILL -->
+    <section class="section section--alt" id="grill" aria-labelledby="h-grill">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 4 / 6</span>
+          <span class="note__title">Was gibt's für Grillfans?</span>
+          <span class="note__src">Quelle: «BBQ Vizeweltmeister», Grill-Kochideen, Set «Welt der BBQs» · Grills und Zubehör gehören in den Shop, nicht auf die Website</span>
+        </aside>
+        <div class="split">
+          <div>
+            <p class="eyebrow">Grill und BBQ</p>
+            <h2 class="h2" id="h-grill">Rubs vom BBQ-Vize-Weltmeister</h2>
+            <p class="lead mb-24">2015 Vize-Weltmeister in Göteborg, mehrfach ausgezeichnet an den Swiss BBQ Masters. Dieses Wissen steckt in unseren Grillgewürzen.</p>
+            <ul class="tags list-reset mb-32" aria-label="Grillgewürze">
+              <li class="tag">BBQ Kentucky Chicken Rub</li>
+              <li class="tag">BBQ Südstaaten</li>
+              <li class="tag">Australian BBQ Rub</li>
+              <li class="tag">Argentinien Asado</li>
+              <li class="tag">Swiss BBQ</li>
+            </ul>
+            <div class="price"><span class="price__now">CHF 24.90</span><span class="price__was">Set «Die Welt der BBQs», fünf Streuer</span></div>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Grillset im Shop</a>
+              <a class="btn btn--secondary" href="kochideen.html">Grill-Kochideen</a>
+            </div>
+            <p class="small mt-24">Grills, Smoker und Zubehör findest du im Shop unter «Grill und Feuer».</p>
+          </div>
+          <div class="ph ph--43" role="img" aria-label="Bildplatzhalter: Grill mit Rubs">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+            <span>Foto: Grill mit Rubs und Pokal<br>(echtes Foto vom BBQ-Team)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 FAMILIE -->
+    <section class="section" id="familie" aria-labelledby="h-family">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 5 / 6</span>
+          <span class="note__title">Isst die ganze Familie mit?</span>
+          <span class="note__src">Quelle: «Kinder» und «Schulen» · Allergen-Angaben gemäss Faktenblatt prüfen</span>
+        </aside>
+        <div class="split split--top">
+          <div>
+            <p class="eyebrow">Familie</p>
+            <h2 class="h2" id="h-family">Die Schärfe kommt am Schluss</h2>
+            <p class="lead mb-24">Würze mild und lass jeden am Tisch selbst nachschärfen. So bestimmen auch Kinder, wie scharf ihr Essen ist.</p>
+            <ul class="checks">
+              <li>Mild abgestimmte Mischungen, Schärfe separat mit Redline Scharfmacher</li>
+              <li>Ohne Gentechnik, nicht bestrahlt</li>
+              <li>Allergene klar deklariert: einzig Senf und Sesam</li>
+              <li>Ohne Geschmacksverstärker, Glutamat und E-Nummern</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="h3">Für Schulen und Kochkurse</h3>
+            <p class="body mb-16">Wir teilen unser Wissen gerne mit Kindern, Jugendlichen und jungen Erwachsenen, für Unterricht, Projektarbeiten und Workshops.</p>
+            <p class="small mb-16">Beispiel: Die Vertiefungsarbeit «Modernes Kochen» einer Schülerin oder eines Schülers der Schule Sarnen erklärt das System von A bis Z. [Freigabe zur Nennung prüfen]</p>
+            <a class="link" href="ueber-uns.html#kontakt">Workshop anfragen →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 START -->
+    <section class="section section--alt" id="loslegen" aria-labelledby="h-go">
+      <div class="wrap">
+        <aside class="note" aria-label="Wireframe-Notiz">
+          <span class="note__q">Frage 6 / 6</span>
+          <span class="note__title">Wie fange ich an?</span>
+          <span class="note__src">Derselbe Abschluss wie auf «So funktioniert's»: kaufen oder Idee finden</span>
+        </aside>
+        <div class="offer-box split" style="background: var(--white);">
+          <div>
+            <h2 class="h2" id="h-go">Probier es aus</h2>
+            <p class="lead mb-24">Fünf Gewürze aus fünf Regionen, geeignet für jede dieser Küchen.</p>
+            <div class="price"><span class="price__now">CHF 24.90</span><span class="price__was">Probierset «Um die Welt»</span></div>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="https://shop.waskocheichheute.ch/de/produkt/probierset-um-die-welt" target="_blank" rel="noopener">Probierset im Shop</a>
+              <a class="btn btn--secondary" href="kochideen.html">Idee finden</a>
+            </div>
+          </div>
+          <div class="ph ph--43" role="img" aria-label="Bildplatzhalter: Probierset">
+            <span>Foto: Probierset «Um die Welt»</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <span class="brand__kicker">REDLINE</span>
+          <span class="brand__name">Was koche ich heute?</span>
+          <p class="footer-text">FoodKreator AG<br>Sagenhofweg 7, 6030 Ebikon<br>+41 41 442 01 55</p>
+        </div>
+        <div>
+          <p class="footer-head">Entdecken</p>
+          <ul class="footer-links">
+            <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+            <li><a href="kochideen.html">Kochideen</a></li>
+            <li><a href="fuer-dich.html">Für dich</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Service</p>
+          <ul class="footer-links">
+            <li><a href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Shop</a></li>
+            <li><a href="ueber-uns.html#kontakt">Verkaufsstellen</a></li>
+            <li><a href="ueber-uns.html#kontakt">Fragen und Antworten</a></li>
+            <li><a href="ueber-uns.html#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Für Gastronomie und Handel</p>
+          <p class="footer-text">Produktentwicklung, Eigenmarken und Gastro-Gebinde.</p>
+          <a class="footer-b2b" href="https://www.foodkreator.ch/" target="_blank" rel="noopener">Zu foodkreator.ch →</a>
+        </div>
+      </div>
+      <div class="footer-legal"><span>© FoodKreator AG</span><a href="#start">Impressum</a><a href="#start">AGB</a><a href="#start">Datenschutz</a></div>
+    </div>
+  </footer>
+
+</div></div></div>
+
+<script src="assets/wireframe.js"></script>
+</body>
+</html>

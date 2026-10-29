@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Der Teller · Was koche ich heute?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/welten.css">
+<style>
+  .t-intro { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 110px 0 60px; overflow: hidden; }
+  .t-intro::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 60% at 75% 50%, rgba(246, 142, 16, .25), transparent 70%), radial-gradient(40% 40% at 5% 95%, rgba(157, 147, 70, .18), transparent 70%); }
+  .t-intro__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 24px; align-items: center; }
+  .t-intro__art { position: relative; }
+  .t-intro__art svg { width: 100%; height: auto; overflow: visible; }
+  .bubble {
+    position: absolute; display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px 8px 8px; border-radius: 999px; background: #fff; box-shadow: 0 10px 26px rgba(38, 31, 31, .16);
+    font: 800 16px/1 var(--display); animation: float 6s ease-in-out infinite;
+  }
+  .bubble i { width: 26px; height: 26px; border-radius: 50%; background: var(--dot); box-shadow: inset 0 0 0 1px rgba(38, 31, 31, .2); }
+
+  .t-stage { position: relative; height: 100vh; overflow: hidden; background: #8ec3e3; }
+  .t-scenes, .t-scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .t-plate { position: absolute; right: 1vw; top: 50%; width: min(56vw, 96vh); height: auto; transform: translateY(-47%); overflow: visible; }
+  .t-panel { position: absolute; left: var(--g); top: 50%; transform: translateY(-50%); width: min(470px, 38vw); z-index: 10; }
+
+  @media (max-width: 860px) {
+    .t-intro { padding-top: 96px; }
+    .t-intro__grid { grid-template-columns: 1fr; }
+    .bubble { font-size: 13px; padding: 6px 12px 6px 6px; }
+    .bubble i { width: 20px; height: 20px; }
+    .t-panel { top: 72px; left: 12px; right: 12px; width: auto; transform: none; }
+    .t-panel .wp-card { padding: 16px 18px; border-radius: 22px; }
+    .t-panel .wp-title { font-size: 2.5rem; }
+    .t-panel .wp-text { font-size: 14px; }
+    .t-plate { width: 124vw; right: auto; left: 50%; top: auto; bottom: 40px; transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body id="top">
+<header data-header></header>
+
+<main>
+  <section class="t-intro" aria-labelledby="h-intro">
+    <div class="wrap t-intro__grid">
+      <div>
+        <p class="eyebrow">Regionale Zutaten · Globaler Geschmack</p>
+        <h1 class="display" id="h-intro">Was koche ich <em>heute?</em></h1>
+        <p class="lead">Nimm, was im Kühlschrank ist. Wähle ein Land. Eine Redline-Gewürzmischung macht daraus ein Gericht aus aller Welt.</p>
+        <div class="btn-row">
+          <a class="btn" href="#welten">Scroll und reise mit
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <a class="btn btn--ghost" href="#probierset">Probierset · CHF 24.90</a>
+        </div>
+      </div>
+      <div class="t-intro__art" aria-hidden="true">
+        <svg id="introArt" viewBox="-340 -400 700 680"></svg>
+        <span class="bubble" style="--dot:#fbf6ec; left: 27%; top: 9%;"><i></i>Rahm?</span>
+        <span class="bubble" style="--dot:#d6452b; left: 52%; top: 1%; animation-delay: -1.5s;"><i></i>Tomate?</span>
+        <span class="bubble" style="--dot:#f6eedb; left: 0; bottom: 14%; animation-delay: -3s;"><i></i>Kokos?</span>
+        <span class="bubble" style="--dot:#5b3520; left: 58%; bottom: 0; animation-delay: -4.5s;"><i></i>Soja?</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="t-stage" id="welten" aria-label="Fünf Welten: gleiche Zutat, andere Kochflüssigkeit, anderes Gewürz">
+    <div class="t-scenes" id="scenes"></div>
+    <svg class="t-plate" id="tplate" viewBox="-340 -400 700 680" aria-hidden="true"></svg>
+    <div class="t-panel"><div class="wp-card"><div class="wp-stack" id="panels" aria-live="polite"></div></div></div>
+    <nav class="rail" id="rail" aria-label="Welten"></nav>
+  </section>
+  <div id="static"></div>
+
+  <div data-outro></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/welten.js"></script>
+<script>
+(function () {
+  'use strict';
+  var A = window.Art, Wl = window.Welten, W = Wl.worlds;
+
+  /* ---------- Einstieg: roher Teller und drei Gläser ---------- */
+  function jarAt(x, y, rot, s, w, delay) {
+    return '<g transform="translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + s + ')"><g class="float" style="animation-delay:' + delay + 's"><g transform="translate(-60 -150)">' +
+      A.jar({ name: w.spice, spice: w.spiceColor, dish: w.sauce }) + '</g></g></g>';
+  }
+  document.getElementById('introArt').innerHTML =
+    A.plate({ raw: true }) + jarAt(-262, -170, -10, 0.8, W[0], 0) + jarAt(250, -230, 9, 0.72, W[2], -2) + jarAt(268, 120, -5, 0.78, W[4], -4);
+
+  /* ---------- Bewegung aus: ruhige Fassung ---------- */
+  if (!Wl.motion) {
+    document.getElementById('welten').remove();
+    Wl.staticWorlds(document.getElementById('static'));
+    return;
+  }
+
+  var gsap = window.gsap;
+  var stage = document.getElementById('welten');
+
+  /* ---------- Landschaften ---------- */
+  var scenesEl = document.getElementById('scenes');
+  scenesEl.innerHTML = W.map(function (w) {
+    return '<svg class="t-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">' + A.scene(w.id) + '</svg>';
+  }).join('');
+  var sc = scenesEl.querySelectorAll('.t-scene');
+
+  /* ---------- Texte ---------- */
+  var panelsEl = document.getElementById('panels');
+  panelsEl.innerHTML = W.map(Wl.panel).join('');
+  var pn = panelsEl.querySelectorAll('.wp');
+
+  /* ---------- Teller, Giessgefässe, Gewürzstaub, Gläser ---------- */
+  var rr = A.rnd(19), svg = '<g id="flames" opacity="0">' + A.flameRing() + '</g>' + A.plate({ all: true, raw: true });
+  W.forEach(function (w, i) {
+    if (w.id === 'feuer') return;
+    svg += '<rect class="t-stream" data-i="' + i + '" x="-48" y="-250" width="16" height="0" rx="8" fill="' + w.liquidColor + '" stroke="rgba(38,31,31,.1)" stroke-width="1"/>';
+    svg += '<g transform="translate(-40 -250)"><g class="t-vessel" data-i="' + i + '">' + A.vessel(w.id) + '</g></g>';
+  });
+  W.forEach(function (w) {
+    var g = '';
+    for (var k = 0; k < 18; k++) g += '<circle cx="40" cy="-140" r="' + (2 + rr() * 2.6).toFixed(1) + '" fill="' + (k % 4 ? w.spiceColor : '#261f1f') + '" opacity="0"/>';
+    svg += '<g class="t-dust">' + g + '</g>';
+  });
+  W.forEach(function (w) {
+    svg += '<g class="t-jar"><g transform="translate(-60 -150)">' + A.jar({ name: w.spice, spice: w.spiceColor, dish: w.sauce }) + '</g></g>';
+  });
+  var tp = document.getElementById('tplate');
+  tp.innerHTML = svg;
+
+  var sauceG = tp.querySelector('.sauce-g'), sauce = tp.querySelector('.sauce'), grillG = tp.querySelector('.grill-g');
+  var food = tp.querySelector('.food'), pcs = tp.querySelectorAll('.pc'), sears = tp.querySelectorAll('.pc-sear'), chars = tp.querySelectorAll('.char');
+  var gars = W.map(function (w) { return tp.querySelector('.gar-' + w.id); });
+  var dusts = tp.querySelectorAll('.t-dust'), jars = tp.querySelectorAll('.t-jar'), flames = document.getElementById('flames');
+  var vessels = {}, streams = {};
+  tp.querySelectorAll('.t-vessel').forEach(function (v) { vessels[v.getAttribute('data-i')] = v; });
+  tp.querySelectorAll('.t-stream').forEach(function (s) { streams[s.getAttribute('data-i')] = s; });
+
+  gsap.set(sc, { opacity: 0 });
+  gsap.set(sc[0], { opacity: 1 });
+  gsap.set(pn, { autoAlpha: 0, y: 40 });
+  gsap.set(pn[0], { autoAlpha: 1, y: 0 });
+  gsap.set(sauceG, { scale: 0, transformOrigin: '50% 50%' });
+  gsap.set(gars, { scale: 0.5, transformOrigin: '50% 50%' });
+  gsap.set(food, { transformOrigin: '50% 50%' });
+  gsap.set(jars, { x: 460, y: -330, rotation: 40, opacity: 0, transformOrigin: '50% 50%' });
+  gsap.set(Object.keys(vessels).map(function (k) { return vessels[k]; }), { x: -240, y: -130, rotation: 0, opacity: 0, transformOrigin: '100% 0%' });
+
+  /* ---------- Rail ---------- */
+  var setActive = Wl.rail(document.getElementById('rail'), W.map(function (w) { return { label: w.name, dot: w.liquidColor }; }), function (i) {
+    window.scrollTo({ top: tl.scrollTrigger.labelToScroll('w' + i), behavior: 'smooth' });
+  });
+
+  /* ---------- Die Reise durch die Welten ---------- */
+  var U = 1.25, labels = [];
+  var snap = Wl.snapper(function () { return labels.map(function (t) { return t / tl.duration(); }); });
+  var tl = gsap.timeline({
+    defaults: { ease: 'power2.inOut' },
+    scrollTrigger: {
+      trigger: stage, start: 'top top',
+      end: function () { return '+=' + Math.round(window.innerHeight * W.length * 1.3); },
+      pin: true, scrub: 0.8, invalidateOnRefresh: true,
+      snap: { snapTo: snap.snapTo, inertia: false, duration: { min: 0.3, max: 0.9 }, delay: 0.12, ease: 'power2.inOut' },
+      onUpdate: function (self) {
+        snap.track(self);
+        var t = tl.time(), idx = 0;
+        labels.forEach(function (lt, k) { if (t >= lt - U * 0.55) idx = k; });
+        setActive(idx);
+      }
+    }
+  });
+
+  W.forEach(function (w, i) {
+    var T = i * U, P = T + (i ? 0.22 : 0.05);
+    if (i) {
+      var prev = sc[i - 1], cur = sc[i];
+      tl.to(prev.querySelectorAll('.L-near'), { y: -90, duration: 0.4, ease: 'power1.in' }, T)
+        .to(prev.querySelectorAll('.L-mid'), { y: -40, duration: 0.4, ease: 'power1.in' }, T)
+        .set(cur, { opacity: 1 }, T + 0.04)
+        .fromTo(cur, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.42, ease: 'power3.inOut', immediateRender: false }, T + 0.04)
+        .fromTo(cur.querySelectorAll('.L-near'), { y: 170 }, { y: 0, duration: 0.5, ease: 'power3.out' }, T + 0.04)
+        .fromTo(cur.querySelectorAll('.L-mid'), { y: 90 }, { y: 0, duration: 0.5, ease: 'power3.out' }, T + 0.04)
+        .fromTo(cur.querySelectorAll('.L-far'), { y: 40 }, { y: 0, duration: 0.5, ease: 'power3.out' }, T + 0.04)
+        .set(prev, { opacity: 0 }, T + 0.47)
+        .to(pn[i - 1], { autoAlpha: 0, y: -30, duration: 0.12, ease: 'power1.in' }, T)
+        .fromTo(pn[i], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.2, ease: 'power2.out' }, T + 0.12)
+        .to(sauceG, { scale: 0, duration: 0.2, ease: 'power2.in' }, T)
+        .to(gars[i - 1], { opacity: 0, scale: 0.6, duration: 0.16 }, T)
+        .to(dusts[i - 1].children, { opacity: 0, duration: 0.14 }, T)
+        .to(jars[i - 1], { x: 540, y: 20, rotation: 30, opacity: 0, duration: 0.26, ease: 'power2.in' }, T)
+        .to(food, { rotation: i * 72, duration: 0.55 }, T);
+    }
+
+    if (w.id !== 'feuer') {
+      var v = vessels[i], s = streams[i];
+      tl.set(sauce, { attr: { fill: w.sauce } }, P)
+        .to(v, { x: 0, y: 0, opacity: 1, duration: 0.14, ease: 'power2.out' }, P)
+        .to(v, { rotation: 108, duration: 0.12 }, P + 0.12)
+        .to(s, { attr: { height: 236 }, duration: 0.08, ease: 'none' }, P + 0.2)
+        .to(sauceG, { scale: 1, duration: 0.22, ease: 'power2.out' }, P + 0.24)
+        .to(s, { attr: { y: -14, height: 0 }, duration: 0.07, ease: 'none' }, P + 0.44)
+        .to(v, { rotation: 0, x: -240, y: -130, opacity: 0, duration: 0.14, ease: 'power2.in' }, P + 0.46);
+    } else {
+      tl.to(grillG, { opacity: 1, duration: 0.2 }, P)
+        .to(flames, { opacity: 1, duration: 0.2 }, P + 0.1)
+        .to(chars, { opacity: 1, duration: 0.16 }, P + 0.3)
+        .to(pcs, { attr: { fill: '#c98b4a' }, duration: 0.2 }, P + 0.3);
+    }
+    if (i === 0) tl.to(pcs, { attr: { fill: '#e0a95e' }, duration: 0.22 }, P + 0.26).to(sears, { opacity: 0.5, duration: 0.22 }, P + 0.26);
+
+    var J = P + 0.5;
+    tl.to(jars[i], { x: 150, y: -250, rotation: -135, opacity: 1, duration: 0.15, ease: 'power2.out' }, J)
+      .to(jars[i], { rotation: -150, duration: 0.03, repeat: 5, yoyo: true, ease: 'sine.inOut' }, J + 0.15);
+    Array.prototype.forEach.call(dusts[i].children, function (c, k) {
+      var a = rr() * Math.PI * 2, d = Math.sqrt(rr()) * 104;
+      tl.to(c, { attr: { cx: Math.cos(a) * d, cy: Math.sin(a) * d }, opacity: 0.95, duration: 0.1, ease: 'power1.in' }, J + 0.16 + k * 0.006);
+    });
+    tl.to(gars[i], { opacity: 1, scale: 1, duration: 0.14, ease: 'back.out(1.7)' }, J + 0.3)
+      .to(jars[i], { x: 268, y: 62, rotation: 8, duration: 0.16 }, J + 0.34);
+    labels.push(J + 0.52);
+    tl.addLabel('w' + i, J + 0.52);
+  });
+  tl.to({}, { duration: 0.25 });
+})();
+</script>
+</body>
+</html>

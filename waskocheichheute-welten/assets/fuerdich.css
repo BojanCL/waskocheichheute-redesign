@@ -1,0 +1,154 @@
+/* ==========================================================================
+   Redline · Unterseite «Für dich»
+   Baut auf welten.css, start.css und page.css auf
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1 · Einstieg: vier Bereiche zur Wahl
+   -------------------------------------------------------------------------- */
+.ph--fd { --hbg: #e6efd8; padding-bottom: clamp(32px, 4vw, 56px); }
+.ph--fd h1 { font-size: clamp(2.2rem, 3.8vw, 3.4rem); max-width: 16ch; }
+.fdh { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.fdh .lead { margin-bottom: 0; }
+.picks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pick { display: grid; grid-template-columns: 76px 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center; padding: 12px 16px 12px 12px; border-radius: 22px; background: #fff; box-shadow: 0 10px 26px rgba(38, 31, 31, .08); text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s; }
+.pick:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(38, 31, 31, .13); }
+.pick__art { grid-row: 1 / 3; width: 76px; height: 76px; }
+.pick__art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.pick b { align-self: end; font: 800 1.1rem/1.15 var(--display); letter-spacing: -.01em; }
+.pick > span:last-child { align-self: start; font-size: 13.5px; line-height: 1.35; color: var(--muted); }
+
+.fd-sub { margin: 0 0 16px; font: 800 1.25rem/1.2 var(--display); letter-spacing: -.01em; }
+.fd-more { margin: 24px 0 0; text-align: center; }
+
+/* --------------------------------------------------------------------------
+   2 · Vegetarisch: Gemüse wie Fleisch
+   -------------------------------------------------------------------------- */
+.swaps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 0 0 clamp(36px, 4vw, 52px); padding: 0; list-style: none; }
+.swap { padding: 10px 14px 18px; border-radius: 24px; background: #fff; box-shadow: 0 10px 26px rgba(38, 31, 31, .07); }
+.swap svg { display: block; width: 100%; height: auto; overflow: visible; }
+.swap__meat { opacity: .55; transition: opacity .3s; }
+.swap__veg { transform-box: fill-box; transform-origin: center; transition: transform .35s var(--ease); }
+.swap:hover .swap__veg { transform: scale(1.06) rotate(-4deg); }
+.swap:hover .swap__meat { opacity: .35; }
+.swap p { margin: 4px 0 0; text-align: center; }
+.swap b { display: block; font: 800 1.35rem/1.1 var(--display); letter-spacing: -.02em; }
+.swap p span { font-size: 14px; color: var(--muted); }
+.vdish { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.vcard { display: flex; flex-direction: column; border-radius: 26px; overflow: hidden; background: #fff; box-shadow: 0 14px 34px rgba(38, 31, 31, .09); text-decoration: none; transition: transform .25s var(--ease), box-shadow .25s; }
+.vcard:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(38, 31, 31, .14); }
+.vcard__art { aspect-ratio: 16 / 11; overflow: hidden; background: #e7efd9; }
+.vcard__art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.vcard:hover .jar-hover { transform: translateY(-8px) rotate(-5deg); }
+.jar-hover { transform-box: fill-box; transform-origin: 50% 100%; transition: transform .35s var(--ease); }
+.vcard__body { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px 20px; }
+.vcard__instead { font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--orange-deep); }
+.vcard__body b { font: 800 1.3rem/1.1 var(--display); letter-spacing: -.02em; }
+.vcard__body > span:not(.vcard__instead) { font-size: 14.5px; color: var(--ink-soft); }
+.vcard__with strong { color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   3 · Abnehmen: Kalorienvergleich
+   -------------------------------------------------------------------------- */
+.kcal { position: relative; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 44px); align-items: center; padding: clamp(20px, 3vw, 36px); border-radius: 32px; background: #fff; box-shadow: 0 14px 40px rgba(38, 31, 31, .08); }
+.kcal__art { max-width: 340px; margin: 0 auto; }
+.kcal__art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.kplate { opacity: 0; transition: opacity .45s var(--ease); }
+.kplate.is-on { opacity: 1; }
+/* Kennzahl in derselben Schrift wie der Fliesstext, nicht in der Display-Schrift */
+.kcal__num { margin: 10px 0 0; text-align: center; font: 700 1.1rem/1 var(--body); color: var(--ink-soft); }
+.kcal__num b { font: 800 clamp(3rem, 5vw, 4rem)/1 var(--body); letter-spacing: -.03em; color: var(--ink); }
+.kcal__num span { display: block; margin-top: 6px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.kcal__delta { min-height: 2.6em; margin: 10px auto 0; max-width: 30ch; text-align: center; font-size: 14.5px; line-height: 1.4; font-weight: 600; color: var(--orange-deep); }
+.kcal__title { margin: 0 0 4px; font: 800 1.2rem/1.2 var(--display); letter-spacing: -.01em; }
+.kcal__sub { margin: 0 0 18px; font-size: 14px; color: var(--muted); }
+.kbars { display: grid; gap: 4px; }
+.kbar { display: grid; grid-template-columns: minmax(150px, 210px) 1fr; align-items: center; gap: 12px; min-height: 48px; padding: 4px 10px 4px 6px; border: 0; border-radius: 14px; background: transparent; font: 600 14.5px/1.2 var(--body); color: var(--ink); text-align: left; cursor: pointer; transition: background .2s; }
+.kbar:hover { background: var(--paper); }
+.kbar[aria-pressed="true"] { background: #fdf0df; font-weight: 800; }
+.kbar__label { display: flex; align-items: center; gap: 10px; }
+.kbar__label i { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--paper); display: flex; align-items: center; justify-content: center; }
+.kbar__label i svg { width: 24px; height: 24px; }
+.kbar__track { position: relative; height: 20px; margin-right: 76px; }
+.kbar__fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 4px 4px 0; background: #7d6e64; transition: background .25s; }
+.kbar[aria-pressed="true"] .kbar__fill { background: #e07a0a; }
+.kbar__val { position: absolute; top: 50%; padding-left: 8px; transform: translateY(-50%); white-space: nowrap; font-weight: 700; color: var(--ink); }
+.ktip { position: absolute; z-index: 5; transform: translate(-50%, calc(-100% - 10px)); padding: 8px 12px; border-radius: 10px; background: var(--ink); color: var(--cream); font-size: 13px; line-height: 1.35; white-space: nowrap; pointer-events: none; box-shadow: 0 10px 24px rgba(38, 31, 31, .25); }
+.ktip b { display: block; }
+.kcal__table { margin-top: 14px; font-size: 14px; }
+.kcal__table summary { cursor: pointer; font-weight: 700; color: var(--orange-deep); }
+.kcal__table table { width: 100%; margin-top: 10px; border-collapse: collapse; }
+.kcal__table th, .kcal__table td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+.kcal__table td { font-variant-numeric: tabular-nums; }
+.fd-tips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+.fd-tip { display: grid; grid-template-columns: 56px 1fr; column-gap: 14px; padding: 20px; border-radius: 24px; background: #fff; box-shadow: 0 10px 26px rgba(38, 31, 31, .06); }
+.fd-tip__ic { grid-row: 1 / 3; width: 56px; height: 56px; border-radius: 50%; background: var(--paper); display: flex; align-items: center; justify-content: center; }
+.fd-tip__ic svg { width: 40px; height: 40px; overflow: visible; }
+.fd-tip h3 { margin: 4px 0 6px; font: 800 1.08rem/1.2 var(--display); }
+.fd-tip p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+
+/* --------------------------------------------------------------------------
+   4 · Grill und BBQ
+   -------------------------------------------------------------------------- */
+.bbq__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 60px); align-items: center; }
+.bbq__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 0 0 20px; }
+.bbq__price b { font: 800 2.2rem/1 var(--display); letter-spacing: -.03em; color: var(--orange); }
+.bbq__price span { color: rgba(255, 250, 243, .75); font-weight: 600; }
+.bbq__art .rise { display: none; } /* Rauch: auf dunklem Grund wirkt er wie graue Kugeln */
+.bbq__note { margin: 18px 0 0; font-size: 14px; color: rgba(255, 250, 243, .65); }
+.bbq__art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bbq__jars { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 26px; margin: clamp(28px, 4vw, 44px) 0 0; padding: 26px 0 0; border-top: 1px solid rgba(255, 250, 243, .15); list-style: none; }
+.bbq__jars li { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 120px; text-align: center; font-size: 14px; font-weight: 700; line-height: 1.25; }
+.bbq__jars svg { width: 62px; height: auto; filter: drop-shadow(0 12px 12px rgba(0, 0, 0, .35)); transition: transform .35s var(--ease); }
+.bbq__jars li:hover svg { transform: translateY(-8px) rotate(-5deg); }
+
+/* --------------------------------------------------------------------------
+   5 · Familie
+   -------------------------------------------------------------------------- */
+.fam { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.fam__art { max-width: 520px; }
+.fam__art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.checks { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.checks li { position: relative; padding-left: 34px; font-size: 16px; line-height: 1.45; }
+.checks li::before { content: ""; position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%; background: var(--olive) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat; }
+.school { display: grid; grid-template-columns: 96px 1fr auto; gap: 20px; align-items: center; margin-top: clamp(32px, 4vw, 52px); padding: clamp(20px, 3vw, 28px); border-radius: 28px; background: var(--cream); box-shadow: inset 0 0 0 1.5px var(--line); }
+.school__art svg { display: block; width: 96px; height: 96px; overflow: visible; }
+.school h3 { margin: 0 0 6px; font: 800 1.3rem/1.15 var(--display); }
+.school p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+.school__ex { margin-top: 8px !important; font-size: 14px !important; color: var(--muted) !important; }
+
+/* --------------------------------------------------------------------------
+   Responsiv
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .swaps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .fdh, .kcal, .bbq__grid, .fam { grid-template-columns: 1fr; }
+  .vdish, .fd-tips { grid-template-columns: 1fr; }
+  .vdish { gap: 12px; }
+  .vcard { flex-direction: row; }
+  .vcard__art { flex: 0 0 40%; aspect-ratio: auto; }
+  .fam__art { order: 2; margin: 0 auto; }
+  .school { grid-template-columns: 72px 1fr; }
+  .school__art svg { width: 72px; height: 72px; }
+  .school .btn { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 560px) {
+  .picks { gap: 8px; }
+  .pick { grid-template-columns: 1fr; grid-template-rows: auto; padding: 12px; text-align: center; }
+  .pick__art { grid-row: auto; margin: 0 auto 6px; width: 64px; height: 64px; }
+  .pick b, .pick > span:last-child { align-self: auto; }
+  .swaps { gap: 10px; }
+  .swap b { font-size: 1.1rem; }
+  .kcal__art { max-width: 190px; }
+  .kcal__num b { font-size: 2.6rem; }
+  .kbar { grid-template-columns: 116px 1fr; gap: 8px; min-height: 44px; padding: 4px 6px; font-size: 13px; }
+  .kbar__label { gap: 6px; }
+  .kbar__label i { width: 26px; height: 26px; }
+  .kbar__label i svg { width: 18px; height: 18px; }
+  .kbar__track { height: 16px; margin-right: 66px; }
+  .kcal__sub { margin-bottom: 10px; }
+  .vcard__body { padding: 12px 14px 14px; }
+  .vcard__body b { font-size: 1.1rem; }
+}
