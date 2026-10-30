@@ -1,2 +1,10 @@
 waskocheichheute-design/
 .DS_Store
+# Schrift Oceania nur lokal (Lizenz ungeklärt)
+waskocheichheute-welten/assets/fonts/
+# Startseite V2 (Kundenlook) nur lokal: Fotos mit ungeklärten Bildrechten
+waskocheichheute-welten/startseite-v2.html
+waskocheichheute-welten/assets/v2.css
+waskocheichheute-welten/assets/v2.js
+waskocheichheute-welten/assets/v2-daten.js
+waskocheichheute-welten/assets/img/v2/

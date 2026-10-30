@@ -32,6 +32,8 @@
   <b>Welten-<span>Workshop</span></b>
   <div class="seg" role="group" aria-label="Richtung">
     <button type="button" data-page="startseite.html" aria-pressed="true"><small>Neu</small>Startseite</button>
+    <button type="button" data-page="startseite-v2.html" aria-pressed="false" data-local><small>V2</small>Startseite im Kundenlook</button>
+    <button type="button" data-page="startseite-v3.html" aria-pressed="false"><small>V3</small>Startseite Mittelweg</button>
     <button type="button" data-page="so-funktionierts.html" aria-pressed="false"><small>Neu</small>So funktioniert's</button>
     <button type="button" data-page="kochideen.html" aria-pressed="false"><small>Neu</small>Kochideen</button>
     <button type="button" data-page="fuer-dich.html" aria-pressed="false"><small>Neu</small>Für dich</button>
@@ -83,6 +85,8 @@
       });
     });
   }
+  /* V2 liegt nur lokal (nicht im Repo): online den Knopf ausblenden */
+  if (/github\.io$/.test(location.hostname)) document.querySelectorAll('[data-local]').forEach(function (b) { b.remove(); });
   group('data-page', function (v) { state.page = v; load(); });
   group('data-motion', function (v) { state.motion = v; load(); });
   group('data-view', function (v) { document.body.classList.toggle('is-phone', v === 'phone'); measure(); });

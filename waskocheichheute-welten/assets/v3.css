@@ -1,0 +1,128 @@
+/* ==========================================================================
+   Startseite V3 · V1 mit den Hintergrundfarben von waskocheichheute.ch
+   Alle Bilder sind Illustrationen. Lädt nach welten.css und start.css.
+
+   Farben der Live-Seite und die Schrift, die darauf lesbar ist
+   (Kontrast nach WCAG, ab 4.5 für Text, ab 3 nur für grosse Titel):
+     Creme   #fdf1e6  Tinte 12.9 · Weinrot 7.7 als Akzent · Coral 3.2 nur gross
+     Dunkel  #2a2a2a  Creme 12.9 · Orange 6.0 als Akzent
+     Olive   #9d9346  nur Tinte 4.6 (Weiss 3.1 nur gross)
+     Orange  #f68e10  Tinte 6.0 (Weiss 2.4 nie)
+     Sand    #de9e62  Tinte 6.3
+     Himbeer #c44550  Weiss 4.9 (Tinte 2.9 nie)
+     Weinrot #862e32  Creme 7.7 · Orange 3.6 nur gross
+   ========================================================================== */
+
+:root {
+  --ink: #2a2a2a;
+  --ink-soft: rgba(42, 42, 42, .78);
+  --dark: #2a2a2a;
+  --dark-2: #343434;
+  --olive: #9d9346;
+  --sand: #de9e62;
+  --himbeer: #c44550;
+  --coral: #eb5737;
+  --wein: #862e32;
+  --wein-2: #74272b;
+  --chili: #c44550;
+}
+
+/* Titel-Akzente: auf Creme Coral (nur grosse Schrift) */
+.h2 em, .claim em { color: var(--coral); }
+
+/* --------------------------------------------------------------------------
+   1 · Hero: Teller und Gläser wechseln zur Fotografie
+   -------------------------------------------------------------------------- */
+.hero__art .v3-real { opacity: 0; transition: opacity .45s var(--ease); pointer-events: none; }
+.hero__art .food, .hero__art .v3-draw { transition: opacity .45s var(--ease), transform .45s var(--ease); transform-box: fill-box; transform-origin: 50% 50%; }
+.hero__art .is-real > .food { opacity: 0; transform: scale(.94); }
+.hero__art .is-real > .v3-real--food { opacity: 1; }
+.hero__art .v3-jar.is-real .v3-draw { opacity: 0; }
+.hero__art .v3-jar.is-real .v3-real { opacity: 1; }
+.hero__art .v3-hit, .hero__art .v3-jar { cursor: pointer; outline: none; }
+.hero__art .v3-jar:focus-visible .v3-draw, .hero__art .v3-hit:focus-visible { stroke: var(--orange); stroke-width: 6; }
+.hero__art svg.has-real ~ .bubble { opacity: .35; transition: opacity .3s; }
+.v3-note { position: absolute; left: 50%; bottom: -52px; transform: translateX(-50%); margin: 0; white-space: nowrap; transition: opacity .6s; }
+.v3-note span { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: var(--dark); color: var(--cream); font-size: 13px; font-weight: 700; }
+.v3-note span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.v3-note.is-seen { opacity: .55; }
+
+/* --------------------------------------------------------------------------
+   2 · So einfach geht's: Dunkel wie die Live-Seite
+   -------------------------------------------------------------------------- */
+#so-gehts { background: var(--dark); color: var(--cream); }
+#so-gehts .eyebrow { color: var(--orange); }
+#so-gehts .h2, #so-gehts .h2--sub, #so-gehts .claim { color: var(--cream); }
+#so-gehts .h2 em, #so-gehts .claim em { color: var(--orange); }
+#so-gehts .lead { color: rgba(253, 241, 230, .8); }
+#so-gehts .box { background: var(--dark-2); box-shadow: none; }
+#so-gehts .box__title { color: var(--cream); }
+#so-gehts .step { color: var(--ink); box-shadow: none; }
+#so-gehts .step--eq { color: var(--orange); }
+#so-gehts .step--result { background: var(--orange); color: var(--ink); }
+#so-gehts .step--result p { color: rgba(42, 42, 42, .85); }
+#so-gehts .step--result .step__n { background: var(--ink); color: var(--orange); }
+#so-gehts .step--result .step__art { height: 150px; margin-top: -6px; }
+#so-gehts .lq { color: var(--ink); box-shadow: none; }
+.mix { background: var(--orange); color: var(--ink); }
+.mix strong { color: var(--ink); }
+.mix p { color: rgba(42, 42, 42, .86); }
+.mix .link { color: var(--ink) !important; }
+
+/* --------------------------------------------------------------------------
+   3 · Finder auf Creme, Ergebnis-Tag in Weinrot
+   -------------------------------------------------------------------------- */
+.result .tag { background: var(--wein); color: var(--cream); }
+
+/* --------------------------------------------------------------------------
+   4 · Wer steckt dahinter: Weinrot wie die Gewürzbox der Kochideen
+   -------------------------------------------------------------------------- */
+.story.sec--dark { background: var(--wein); color: var(--cream); }
+.story .eyebrow { color: #ffb15c; }
+.story .h2 em { color: #ffb15c; }
+.story p.big { color: rgba(253, 241, 230, .9); }
+.story .link { color: #ffb15c !important; }
+.story .portrait { background: radial-gradient(circle at 50% 40%, #9c3a3e, var(--wein-2) 70%); }
+.story .facts { background: rgba(253, 241, 230, .16); }
+.story .fact { background: var(--wein-2); }
+.story .fact b { color: #ffb15c; }
+.story .fact span { color: rgba(253, 241, 230, .82); }
+
+/* --------------------------------------------------------------------------
+   5 · Probierset: Olive mit Tinte
+   -------------------------------------------------------------------------- */
+.offer { background: var(--olive); color: var(--ink); }
+.offer::before { background: radial-gradient(circle, rgba(255, 250, 243, .25), transparent 65%); }
+.offer .eyebrow { color: var(--ink); }
+.offer .h2 em { color: #fff; }
+.offer .lead { color: rgba(42, 42, 42, .86); }
+.offer .pricebox span em { background: var(--ink); color: var(--orange); }
+.offer .setcard { background: var(--cream); }
+
+/* --------------------------------------------------------------------------
+   6 · Für dich: Olive, Weiss, Dunkel, Himbeer
+   -------------------------------------------------------------------------- */
+.tile--a { --bgc: var(--olive); --fgc: var(--ink); }
+.tile--c { --bgc: var(--dark); --fgc: var(--cream); }
+.tile--d { --bgc: var(--himbeer); --fgc: #fff; }
+
+/* --------------------------------------------------------------------------
+   7 · Dranbleiben und Fuss
+   -------------------------------------------------------------------------- */
+.news { background: var(--dark); }
+.news::after { border-color: var(--orange); }
+.side .mini:last-child { background: var(--sand); box-shadow: none; }
+.side .mini:last-child .mini__ic { background: rgba(255, 255, 255, .55); }
+.side .mini:last-child p { color: rgba(42, 42, 42, .86); }
+.foot2 { background: var(--dark); }
+
+@media (max-width: 900px) {
+  .v3-note { bottom: -40px; }
+  .v3-note span { font-size: 12px; }
+}
+
+/* Akzent auf Dunkel immer Orange (Coral auf Dunkel nur 4.1) */
+.news .h2 em, .foot2 em { color: var(--orange); }
+/* Grill-Kachel: neue Illustration etwas grösser */
+.tile--c .v3-grill { width: min(84%, 380px); margin-top: -14px; }
+.tile--c .v3-grill svg { width: 100%; height: auto; }
