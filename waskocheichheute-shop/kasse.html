@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kasse · Redline Shop</title>
+<meta name="description" content="Kasse im Redline Shop (Entwurf).">
+<meta name="theme-color" content="#fdf1e6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../waskocheichheute-welten/assets/welten.css">
+<link rel="stylesheet" href="../waskocheichheute-welten/assets/start.css">
+<link rel="stylesheet" href="../waskocheichheute-welten/assets/page.css">
+<link rel="stylesheet" href="assets/shop.css">
+</head>
+<body data-page="kasse">
+<a class="sr-only" href="#inhalt">Zum Inhalt springen</a>
+<!-- Kopf, Mini-Warenkorb und Fuss baut assets/shop.js -->
+
+<main id="inhalt">
+  <section class="kh">
+    <div class="wrap">
+      <ol class="crumbs"><li><a href="index.html">Shop</a></li><li><a href="warenkorb.html">Warenkorb</a></li><li aria-current="page">Kasse</li></ol>
+      <h1>Kasse</h1>
+      <p class="lead">Drei Schritte: Adresse, Versand, Zahlung.</p>
+    </div>
+  </section>
+  <div class="wrap wk">
+    <form class="co" data-keep onsubmit="return false">
+      <p class="co__note">Entwurf: Die Kasse zeigt den Ablauf. Bestellen ist hier nicht möglich.</p>
+      <div class="co__step">
+        <h2><b>1</b>Lieferadresse</h2>
+        <div class="fields">
+          <div class="field"><label for="vn">Vorname</label><input id="vn" autocomplete="given-name"></div>
+          <div class="field"><label for="nn">Nachname</label><input id="nn" autocomplete="family-name"></div>
+          <div class="field field--4"><label for="str">Strasse und Nummer</label><input id="str" autocomplete="street-address"></div>
+          <div class="field field--2"><label for="plz">PLZ</label><input id="plz" inputmode="numeric" autocomplete="postal-code"></div>
+          <div class="field field--4"><label for="ort">Ort</label><input id="ort" autocomplete="address-level2"></div>
+          <div class="field field--2"><label for="land">Land</label><select id="land"><option>Schweiz</option></select></div>
+          <div class="field"><label for="mail">E-Mail</label><input id="mail" type="email" autocomplete="email"></div>
+          <div class="field"><label for="tel">Telefon (für Rückfragen)</label><input id="tel" type="tel" autocomplete="tel"></div>
+        </div>
+      </div>
+      <div class="co__step">
+        <h2><b>2</b>Versand</h2>
+        <div class="choice">
+          <label><input type="radio" name="versand" value="post" checked><span><b>PostPac Priority</b><small>Heute bestellt, morgen unterwegs. Ab CHF 80 gratis.</small></span><em data-ship-std>CHF 9.90</em></label>
+        </div>
+      </div>
+      <div class="co__step">
+        <h2><b>3</b>Zahlung</h2>
+        <div class="choice">
+          <label><input type="radio" name="zahlung" checked><span><b>Rechnung</b></span><em></em></label>
+          <label><input type="radio" name="zahlung"><span><b>Kreditkarte</b></span><em></em></label>
+          <label><input type="radio" name="zahlung"><span><b>TWINT</b></span><em></em></label>
+        </div>
+      </div>
+    </form>
+    <aside class="sum" aria-labelledby="h-sum" data-kasse-sum></aside>
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="../waskocheichheute-welten/assets/art.js"></script>
+<script src="../waskocheichheute-welten/assets/gerichte.js"></script>
+<script src="assets/daten.js"></script>
+<script src="assets/shop.js"></script>
+</body>
+</html>
