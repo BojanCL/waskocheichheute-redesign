@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>FoodKreator · Ihr eigenes Food-Produkt, entwickelt und produziert in Ebikon</title>
+<meta name="description" content="FoodKreator entwickelt und produziert Gewürzmischungen, Marinaden, Saucen und Snacks für Firmen und Privatpersonen. Von der Idee bis ins Regal, auch in kleinen Mengen.">
+<meta name="theme-color" content="#fdf1e6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../waskocheichheute-welten/assets/welten.css">
+<link rel="stylesheet" href="../waskocheichheute-welten/assets/start.css">
+<link rel="stylesheet" href="../waskocheichheute-welten/assets/page.css">
+<link rel="stylesheet" href="assets/fk.css">
+</head>
+<body data-page="start">
+<a class="sr-only" href="#inhalt">Zum Inhalt springen</a>
+<!-- Kopf und Fuss baut assets/fk.js -->
+
+<main id="inhalt">
+
+  <!-- ============================== 1 · EINSTIEG ============================== -->
+  <section class="fkh" aria-labelledby="h-top">
+    <div class="wrap fkh__grid">
+      <div>
+        <p class="eyebrow">Produktentwicklung und Produktion · Ebikon</p>
+        <h1 id="h-top">Ihr eigenes Food-Produkt. Wir entwickeln und produzieren es mit <em>Ihnen.</em></h1>
+        <p class="lead">Gewürzmischung, Marinade, Sauce oder Snack: FoodKreator begleitet Sie von der ersten Idee bis zum fertigen Produkt. Für Firmen und Privatpersonen, auch in kleinen Mengen.</p>
+        <div class="btn-row">
+          <a class="btn btn--orange" href="#anfrage">Idee besprechen</a>
+          <a class="btn btn--ghost" href="#ablauf">So läuft es ab</a>
+        </div>
+        <ul class="proof">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Entwickelt von Simon Keller, gelernter Koch</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Über 100 eigene Redline-Mischungen, erhältlich bei Coop</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Für Kunden wie Coop Fine Food, Betty Bossi und Wagamama</li>
+        </ul>
+      </div>
+      <div class="maker" data-maker>
+        <div class="maker__stage" data-maker-stage></div>
+        <div class="maker__form">
+          <label for="produktname">Wie soll Ihr Produkt heissen?</label>
+          <input id="produktname" type="text" maxlength="30" placeholder="z. B. Grosis Grillgewürz" autocomplete="off">
+          <div class="types" role="group" aria-label="Art des Produkts">
+            <button type="button" data-typ="gewuerz" aria-pressed="true">Gewürzmischung</button>
+            <button type="button" data-typ="sauce" aria-pressed="false">Sauce oder Marinade</button>
+            <button type="button" data-typ="snack" aria-pressed="false">Snack oder Nüsse</button>
+            <button type="button" data-typ="anderes" aria-pressed="false">Etwas anderes</button>
+          </div>
+          <div class="maker__go"><a class="link" data-maker-go href="kontakt.html">Mit dieser Idee anfragen <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><small>Unverbindlich</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 2 · FÜR WEN ============================== -->
+  <section class="sec sec--tight sec--cream" id="fuer-wen" aria-labelledby="h-who">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Für wen</p>
+          <h2 class="h2" id="h-who">Ob Privatperson oder Grossküche: Wir entwickeln Ihr <em>Produkt.</em></h2>
+        </div>
+        <p class="lead">Wählen Sie, was auf Sie zutrifft. Sie sehen, was wir für Sie machen und für wen wir es schon gemacht haben.</p>
+      </div>
+      <div class="who" data-who>
+        <ul class="who__list" role="tablist" aria-label="Wer sind Sie?" data-who-list></ul>
+        <div class="who__panel" id="who-panel" role="tabpanel" data-who-panel aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 3 · LEISTUNGEN ============================== -->
+  <section class="sec sec--tight" id="leistungen" aria-labelledby="h-svc">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Leistungen</p>
+          <h2 class="h2" id="h-svc">Das entwickeln und produzieren wir für <em>Sie.</em></h2>
+        </div>
+        <p class="lead">Von der Gewürzmischung bis zum fertigen Produkt im Regal. Sie wählen, wie viel Sie selbst machen wollen.</p>
+      </div>
+      <div class="services">
+        <article class="svc2" data-reveal><div class="svc2__art" data-art="moerser"></div><h3>Gewürz- und Aromakonzepte</h3><p>Eine Mischung, die nach Ihnen schmeckt. Für Fleisch, Fisch, Gemüse, Backwaren oder als Produkt für sich.</p></article>
+        <article class="svc2" data-reveal style="--d:.05s"><div class="svc2__art" data-art="rezept"></div><h3>Rezepturen</h3><p>Rezepturen für Backwaren, Fleisch, Saucen und Fertigprodukte. Nicht jedes Produkt beginnt mit Gewürzen.</p></article>
+        <article class="svc2" data-reveal style="--d:.1s"><div class="svc2__art" data-art="eigenmarke"></div><h3>Eigenmarke und Private Label</h3><p>Ihr Name auf dem Produkt. Wir entwickeln, produzieren und verpacken, Sie verkaufen.</p></article>
+        <article class="svc2" data-reveal><div class="svc2__art" data-art="serie"></div><h3>Produktlinien und limitierte Serien</h3><p>Eine ganze Linie oder eine Edition für eine Aktion, eine Saison oder ein Jubiläum.</p></article>
+        <article class="svc2" data-reveal style="--d:.05s"><div class="svc2__art" data-art="tausch"></div><h3>Bestehende Rezepte anpassen</h3><p>Sie haben ein Rezept, das verbessert, vereinfacht oder an Schweizer Vorschriften angepasst werden muss.</p><p class="svc2__ex">Beispiel: Marinaden für Wagamama</p></article>
+        <article class="svc2" data-reveal style="--d:.1s"><div class="svc2__art" data-art="band"></div><h3>Lohnarbeit: produzieren und verpacken</h3><p>Wir produzieren und verpacken Gewürze in Ihrem Auftrag. Auch Kleinmengen und einmalige Aufträge.</p></article>
+      </div>
+      <p class="also"><b>Auch das machen wir:</b> Snack- und Nussprodukte · Bierprodukte und Getränkekonzepte</p>
+    </div>
+  </section>
+
+  <!-- ============================== 4 · ABLAUF ============================== -->
+  <section class="sec sec--tight sec--dark" id="ablauf" aria-labelledby="h-flow">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">So läuft es ab</p>
+          <h2 class="h2" id="h-flow">Von der Idee bis ins Regal in fünf <em>Schritten.</em></h2>
+        </div>
+        <p class="lead">Pragmatisch und ohne lange Vorlaufzeiten. Auch Kleinmengen, Tests und Pilotserien sind möglich.</p>
+      </div>
+      <ol class="flow">
+        <li><div class="flow__art" data-art="reden"></div><span class="flow__n">1</span><h3>Idee besprechen</h3><p>Sie erzählen, was Sie sich vorstellen: Geschmack, Einsatz und Menge.</p></li>
+        <li><div class="flow__art" data-art="moerser" data-light></div><span class="flow__n">2</span><h3>Rezeptur entwickeln</h3><p>Wir mischen und kochen, bis der Geschmack zu Ihrer Idee passt.</p></li>
+        <li><div class="flow__art" data-art="loeffel" data-light></div><span class="flow__n">3</span><h3>Probieren und anpassen</h3><p>Sie testen, wir passen an. Tests und Kleinmengen sind möglich.</p></li>
+        <li><div class="flow__art" data-art="etikett" data-light></div><span class="flow__n">4</span><h3>Verpackung und Deklaration</h3><p>Etikett, Zutatenliste, Hygiene und Vorschriften denken wir von Anfang an mit.</p></li>
+        <li><div class="flow__art" data-art="band" data-light></div><span class="flow__n">5</span><h3>Produzieren</h3><p>Wir produzieren und verpacken: als Pilotserie, einmalig oder laufend.</p></li>
+      </ol>
+      <div class="flow__end">
+        <p>Sie brauchen nur eine Idee. Den Rest machen wir <em>zusammen.</em></p>
+        <a class="btn btn--orange" href="#anfrage">Idee besprechen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 5 · FRAGEN ============================== -->
+  <section class="sec sec--tight" id="fragen" aria-labelledby="h-faq">
+    <div class="wrap faq">
+      <div>
+        <p class="eyebrow">Häufige Fragen</p>
+        <h2 class="h2" id="h-faq">Was Sie sich vielleicht gerade <em>fragen.</em></h2>
+        <p class="lead">Ihre Frage ist nicht dabei? Rufen Sie an: <a href="tel:+41414420155">041 442 01 55</a>.</p>
+      </div>
+      <div class="faq__list"><details><summary>Ich bin Privatperson. Machen Sie auch kleine Projekte?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Ja. Kleinmengen, Tests und Pilotserien sind möglich, ohne lange Vorlaufzeiten. Auch einmalige Aufträge stellen wir her.</p></details><details><summary>Muss ich mich mit Lebensmittelrecht auskennen?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Nein. Entwicklung, Tests, Verpackung, Deklaration, Hygiene und Regulierung denken wir von Anfang an mit. So entsteht ein Produkt, das nicht nur gut schmeckt, sondern auch verkauft werden darf.</p></details><details><summary>Wer produziert mein Produkt?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Wir. FoodKreator produziert und verpackt im Auftrag. Abgefüllt und verpackt wird in Zusammenarbeit mit der Stiftung Rütimattli.</p></details><details><summary>Verkaufen Sie mein Produkt dann auch selbst?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Nein. Produkte, die wir in Ihrem Auftrag entwickeln, entstehen exklusiv für Sie und sind nicht Teil unseres eigenen Sortiments.</p></details><details><summary>Geht auch etwas anderes als Gewürze?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Ja. Nicht jedes Produkt beginnt mit Gewürzen. Wir entwickeln Rezepturen für Backwaren, Fleisch, Saucen und Fertigprodukte, dazu Snack-, Nuss- und Bierprodukte.</p></details><details><summary>Können Sie ein bestehendes Rezept nachbauen oder anpassen?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Ja. Für die Restaurantkette Wagamama haben wir Marinaden so genau nachgebaut, dass kaum ein Unterschied zum Original merkbar ist, und zwar mit Zutaten, die in der Schweiz zulässig sind.</p></details><details><summary>Was kostet das?<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>Das hängt von Produkt, Menge und Verpackung ab. Erzählen Sie uns Ihre Idee, dann besprechen wir, was für Sie sinnvoll ist.</p></details></div>
+    </div>
+  </section>
+
+  <!-- ============================== 6 · REFERENZEN ============================== -->
+  <section class="sec sec--tight sec--cream" id="referenzen" aria-labelledby="h-ref">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Referenzen</p>
+          <h2 class="h2" id="h-ref">Für Coop, Wagamama und die SV Group haben wir Produkte <em>entwickelt.</em></h2>
+        </div>
+        <a class="link" href="referenzen.html">Alle Referenzen <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="cases" data-cases="coop,wagamama,sv" data-short></div>
+      <div class="logowall"><div class="logos"><p class="logos__label">Sie vertrauen FoodKreator und Redline</p><div class="logos__track" data-logos></div></div></div>
+    </div>
+  </section>
+
+  <!-- ============================== 7 · REDLINE ============================== -->
+  <section class="sec sec--tight offer" aria-labelledby="h-own">
+    <div class="wrap own">
+      <div>
+        <p class="eyebrow">Unsere eigene Gewürzlinie</p>
+        <h2 class="h2" id="h-own">Wir machen das auch für uns: <em>Redline.</em></h2>
+        <p class="lead">Über 100 Mischungen, entwickelt in Ebikon. Im Detailhandel, in der Gastronomie und in vielen Küchen zu Hause. Der beste Beweis, dass wir Produkte bis ins Regal bringen.</p>
+        <div class="nums"><div><b>100+</b><span>eigene Mischungen</span></div><div><b>60</b><span>Gerichte für die SV Group</span></div><div><b>30</b><span>Personen arbeiten an Redline</span></div></div>
+        <div class="btn-row"><a class="btn" href="../waskocheichheute-shop/index.html">Zum Redline-Shop</a><a class="btn btn--ghost" href="../waskocheichheute-welten/startseite.html">Was koche ich heute?</a></div>
+      </div>
+      <div class="own__art" data-own></div>
+    </div>
+  </section>
+
+  <!-- ============================== 8 · PERSON ============================== -->
+  <section class="sec sec--tight" aria-label="Simon Keller">
+    <div class="wrap">
+      <div class="person">
+        <div class="person__pic" data-chef></div>
+        <div>
+          <p class="eyebrow">Wer Ihr Produkt entwickelt</p>
+          <blockquote>Ihr Produkt entwickelt ein <em>Koch.</em></blockquote>
+          <p>Simon Keller ist gelernter Koch und Inhaber von FoodKreator. Die rund 100 Mischungen unserer Gewürzlinie Redline hat er selbst entwickelt, aus Recherche und Erfahrung. Genau so geht er auch an Ihre Idee heran: mit dem Geschmack zuerst.</p>
+          <p>Unser Grundsatz: <b>Geht nicht, gibts nicht.</b></p>
+          <a class="link" href="ueber-uns.html">Mehr über FoodKreator <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 9 · ANFRAGE ============================== -->
+  <section class="sec sec--tight sec--cream" id="anfrage" aria-labelledby="h-ask">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Anfrage</p>
+          <h2 class="h2" id="h-ask">Erzählen Sie uns von Ihrer <em>Idee.</em></h2>
+        </div>
+        <p class="lead">Ein paar Sätze reichen. Wählen Sie, was zutrifft. Den Rest besprechen wir zusammen.</p>
+      </div>
+      <div class="ask">
+        <div data-ask></div>
+        <aside class="side2">
+          <div class="box2"><h3>Was danach passiert</h3><ol><li>Wir lesen Ihre Idee.</li><li>Wir melden uns per E-Mail oder Telefon.</li><li>Gemeinsam klären wir die nächsten Schritte.</li></ol></div>
+          <div class="box2 box2--dark"><h3>Lieber direkt reden?</h3><a class="tel" href="tel:+41414420155">041 442 01 55</a><p><a href="mailto:info@foodkreator.ch">info@foodkreator.ch</a></p><p style="color:rgba(255,250,243,.7);font-size:14px;margin:0">FoodKreator AG, Sagenhofweg 7, 6030 Ebikon</p></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div data-footer></div>
+
+<script src="../waskocheichheute-welten/assets/art.js"></script>
+<script src="../waskocheichheute-welten/assets/gerichte.js"></script>
+<script src="assets/fk.js"></script>
+</body>
+</html>
