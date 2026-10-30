@@ -37,6 +37,14 @@
     <button type="button" data-page="fuer-dich.html" aria-pressed="false"><small>Neu</small>Für dich</button>
     <button type="button" data-page="ueber-uns.html" aria-pressed="false"><small>Neu</small>Über uns</button>
     <button type="button" data-page="kochidee-mekong.html" aria-pressed="false"><small>Neu</small>Kochidee Mekong</button>
+    <button type="button" data-page="../waskocheichheute-shop/index.html" aria-pressed="false"><small>Shop</small>Start</button>
+    <button type="button" data-page="../waskocheichheute-shop/kategorie.html" aria-pressed="false"><small>Shop</small>Gewürze</button>
+    <button type="button" data-page="../waskocheichheute-shop/produkt.html?p=helvetica-110g" aria-pressed="false"><small>Shop</small>Produkt</button>
+    <button type="button" data-page="../waskocheichheute-shop/warenkorb.html" aria-pressed="false"><small>Shop</small>Warenkorb</button>
+    <button type="button" data-page="../foodkreator/index.html" aria-pressed="false"><small>FK</small>Start</button>
+    <button type="button" data-page="../foodkreator/referenzen.html" aria-pressed="false"><small>FK</small>Referenzen</button>
+    <button type="button" data-page="../foodkreator/ueber-uns.html" aria-pressed="false"><small>FK</small>Über uns</button>
+    <button type="button" data-page="../foodkreator/kontakt.html" aria-pressed="false"><small>FK</small>Kontakt</button>
     <button type="button" data-page="teller.html" aria-pressed="false"><small>01</small>Der Teller</button>
     <button type="button" data-page="reise.html" aria-pressed="false"><small>02</small>Die Reise</button>
     <button type="button" data-page="glas.html" aria-pressed="false"><small>03</small>Das Gewürzglas</button>
@@ -56,7 +64,7 @@
 (function () {
   var state = { page: 'startseite.html', motion: '1' };
   var frame = document.getElementById('frame'), open = document.getElementById('open');
-  function url() { return state.page + (state.motion === '0' ? '?motion=0' : ''); }
+  function url() { return state.page + (state.motion === '0' ? (state.page.indexOf('?') >= 0 ? '&' : '?') + 'motion=0' : ''); }
   var bar = document.querySelector('.bar'), body = document.body;
   function setOff(v) { body.style.setProperty('--off', Math.max(0, Math.min(v, bar.offsetHeight)) + 'px'); }
   function measure() { body.style.setProperty('--barh', bar.offsetHeight + 'px'); }

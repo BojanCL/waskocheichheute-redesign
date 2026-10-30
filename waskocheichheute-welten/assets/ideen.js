@@ -14,7 +14,9 @@
   function $(s, r) { return (r || document).querySelector(s); }
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   var KOCHIDEE = 'kochidee-mekong.html';
-  var SHOP = 'https://shop.waskocheichheute.ch/';
+  var SHOP = '../waskocheichheute-shop/';
+  /* Gewürz-Schlüssel der Zeichnungen → Produkt im Shop-Entwurf */
+  var SHOP_SLUG = { mekong: 'kambotscha-wok', puertorico: 'puerto-rico-ab-690-chf', helvetica: 'helvetica-110g', spanien: 'paella-70g', cajun: 'cajun', bbq: 'bbq-sued-staaten', argentinien: 'argentinien', suedindien: 'sued-indischer-curry', korea: 'korea-gewuerzmischung-85g', peking: 'peking-69g', canada: 'sandelholz1', france: 'france-ab-690-chf', einsfueralles: '1fueralles-gewuerzmischung-90g', schweden: 'sweden-gewuerzmischung-60g', quebec: 'quebec-ab-690-chf', kosaken: 'kosaken-bbq-gewuerzmischung', newmexiko: 'new-mexiko-ab-690-chf', aethiopien: 'aethiopien-gewuerzmischung-55g' };
   var ARROW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
   /* ------------------------------------------------------------------
@@ -130,7 +132,7 @@
           '<p class="idea__with">mit <strong>Redline ' + sp.name + '</strong></p>' +
           '<p class="idea__text">' + d.text + '</p>' +
           '<div class="idea__links"><span class="idea__go">Zur Kochidee ' + ARROW + '</span>' +
-          '<a class="idea__buy" href="' + SHOP + '" target="_blank" rel="noopener">Gewürz kaufen</a></div>' +
+          '<a class="idea__buy" href="' + SHOP + (SHOP_SLUG[d.s] ? 'produkt.html?p=' + SHOP_SLUG[d.s] : 'index.html') + '">Gewürz kaufen</a></div>' +
         '</div></article>';
     };
     var update = function () {

@@ -147,7 +147,7 @@
       then: '', now: now(['aethiopien', 'helvetica', 'argentinien', 'mekong', 'peking'], 'Jede Flüssigkeit hat ihr typisches Gewürz. Kombinieren darfst du alles: Das nennen wir Mischküche.', true) },
     { key: 'Heute', scene: 'heute', sky: '#9ccbe6', sea: '#5f9fc0', kicker: 'Heute · Ebikon', title: 'Daraus wurde <em>Redline.</em>',
       text: 'Ein Schiff bringt ihn zurück in die Schweiz. Dort entwickelt er daraus rund 100 Gewürzmischungen, für jede Region der Welt. Gemischt und abgefüllt wird bis heute in der Schweiz.',
-      then: '', now: '<div class="btn-row"><a class="btn btn--orange btn--small" href="https://shop.waskocheichheute.ch/de/produkt/probierset-um-die-welt" target="_blank" rel="noopener">Probierset · CHF 24.90</a><a class="btn btn--ghost btn--small" href="kochideen.html">Kochideen</a></div>' }
+      then: '', now: '<div class="btn-row"><a class="btn btn--orange btn--small" href="../waskocheichheute-shop/produkt.html?p=probierset-um-die-welt">Probierset · CHF 24.90</a><a class="btn btn--ghost btn--small" href="kochideen.html">Kochideen</a></div>' }
   ];
   var N = STOPS.length, STORM = 4;
 

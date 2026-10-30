@@ -283,7 +283,7 @@
         '<div class="result__buy">' +
           '<svg class="result__jar" viewBox="0 0 120 300" aria-hidden="true">' + A.jar({ name: sp.name, spice: sp.color, dish: grill ? '#e0a95e' : l.sauce }) + '</svg>' +
           '<div class="result__buytext"><b>Redline ' + sp.name + '</b><span>Das Gewürz für dieses Gericht · <em>Streuer ab CHF 6.90</em></span></div>' +
-          '<a class="btn btn--ghost btn--small" href="https://shop.waskocheichheute.ch/" target="_blank" rel="noopener">Im Shop kaufen</a>' +
+          '<a class="btn btn--ghost btn--small" href="../waskocheichheute-shop/index.html">Im Shop kaufen</a>' +
         '</div>' +
         (more.length ? '<p class="result__more"><span>Weitere Rezepte mit Redline ' + sp.name + ':</span>' +
           more.map(function (d) { return '<a href="' + KOCHIDEE + '">' + d.name + '</a>'; }).join('') + '</p>' : '');
