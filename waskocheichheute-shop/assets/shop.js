@@ -657,6 +657,7 @@
   function renderProdukt() {
     var p = P(param('p') || '') || P('helvetica-110g'), isG = p.g[0] === 'gewuerz', isSet = p.g[0] === 'set';
     var idee = D.ideen[p.s], rez = D.rezepte[p.s], st = { i: 0 };
+    merken(p.s);
     document.title = title(p) + ' · Redline Shop';
     var grp = isG ? 'gewuerze' : isSet ? 'sets' : p.g[0];
     var crumbs = '<ol class="crumbs"><li><a href="index.html">Shop</a></li><li><a href="kategorie.html' + (grp === 'gewuerze' ? '' : '?k=' + grp) + '">' + GRUPPEN[grp].t + '</a></li>' +
@@ -834,6 +835,18 @@
     });
     var gr = $('[data-ship-std]'); if (gr) gr.textContent = vs ? chf(vs) : 'gratis';
   }
+
+  /* ------------------------------------------------------------------
+     Zuletzt angesehen und Schnittstelle für Zusatzseiten (produkt-story.html)
+     ------------------------------------------------------------------ */
+  var ZKEY = 'redline-zuletzt';
+  function zuletzt(s) { try { return JSON.parse(localStorage.getItem(ZKEY) || '[]').filter(function (x) { return x !== s && P(x); }); } catch (e) { return []; } }
+  function merken(s) { try { localStorage.setItem(ZKEY, JSON.stringify([s].concat(zuletzt(s)).slice(0, 8))); } catch (e) { /* ohne Speicher */ } }
+  window.Shop = {
+    P: P, add: add, title: title, sub: sub, jar: jar, chf: chf, esc: esc, url: url, card: card, suggestions: suggestions,
+    einzelpreis: einzelpreis, per100: per100, vname: vname, fmtMenge: fmtMenge, artName: artName, regionName: regionName,
+    badges: badges, SVG: SVG, zuletzt: zuletzt, merken: merken, reduced: reduced, GEBINDE_FUER: GEBINDE_FUER
+  };
 
   /* ------------------------------------------------------------------
      Start
